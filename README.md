@@ -221,4 +221,4 @@ To implement a custom printer:
 
 You can run the test suite using munit:
 
-	haxelib run munit test -js -as3 -neko
+	haxelib run munit test -js -as3 -neko -debug

@@ -25,7 +25,7 @@ class TestMain
 
         #if MCOVER
             var client = new massive.mcover.munit.client.MCoverPrintClient();
-            var httpClient = new HTTPClient(new massive.mcover.munit.client.MCoverSummaryReportClient());
+            var httpClient = new HTTPClient(new m.cover.coverage.munit.client.MCoverPrintClient());
         #else
             var client = new RichPrintClient();
             var httpClient = new HTTPClient(new SummaryReportClient());

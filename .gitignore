@@ -3,5 +3,7 @@
 *.swf
 *.n
 
+.mcover
+
 /build
 /test/TestSuite.hx
