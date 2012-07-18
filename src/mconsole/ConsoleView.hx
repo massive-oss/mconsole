@@ -1,6 +1,6 @@
-package m.console;
+package mconsole;
 
-import m.console.Printer;
+import mconsole.Printer;
 
 #if js
 

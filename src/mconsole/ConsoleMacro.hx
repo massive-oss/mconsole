@@ -1,4 +1,4 @@
-package m.console;
+package mconsole;
 
 #if (macro && !haxe_209)
 import neko.Sys;

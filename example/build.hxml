@@ -1,6 +1,6 @@
 -js build/console.js
 -main Main
--cp ../../../src
+-cp ../src
 -cp src
 -debug
 
@@ -9,7 +9,7 @@
 -swf build/console.swf
 -swf-header 800:600:60:0
 -main Main
--cp ../../../src
+-cp ../src
 -cp src
 -debug
 
@@ -17,7 +17,7 @@
 
 -neko build/console.n
 -main Main
--cp ../../../src
+-cp ../src
 -cp src
 -debug
 

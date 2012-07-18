@@ -1,4 +1,4 @@
-package m.console;
+package mconsole;
 
 import haxe.PosInfos;
 

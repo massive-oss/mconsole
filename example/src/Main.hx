@@ -1,6 +1,3 @@
-import m.signal.Event;
-import m.loader.Loader;
-
 class Main
 {
 	public static function main():Void
@@ -8,7 +5,7 @@ class Main
 		Console.start();
 
 		#if (js || flash)
-		// the defaultPrinter for flash/js is m.console.ConsoleView. If WebKit 
+		// the defaultPrinter for flash/js is mconsole.ConsoleView. If WebKit 
 		// is available, it is not attached automatically. We attach here for 
 		// demonstration purposes.
 		Console.defaultPrinter.attach();

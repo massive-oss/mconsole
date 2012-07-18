@@ -1,7 +1,7 @@
 import haxe.PosInfos;
 
-import m.console.Printer;
-import m.console.LogLevel;
+import mconsole.Printer;
+import mconsole.LogLevel;
 
 /**
 A simple printer implementation that filters messages for another printer so 

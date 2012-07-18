@@ -1,4 +1,4 @@
 /**
-An alias for m.console.Console
+An alias for mconsole.Console
 */
-typedef Console = m.console.Console;
+typedef Console = mconsole.Console;

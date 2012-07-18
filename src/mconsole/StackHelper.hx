@@ -1,4 +1,4 @@
-package m.console;
+package mconsole;
 
 import haxe.Stack;
 
@@ -12,7 +12,7 @@ class StackHelper
 	static function createFilters()
 	{
 		var filters = new Hash<Bool>();
-		filters.set("@ m.console.ConsoleRedirect.haxeTrace:59", true);
+		filters.set("@ mconsole.ConsoleRedirect.haxeTrace:59", true);
 		return filters;
 	}
 

@@ -1,4 +1,4 @@
-package m.console;
+package mconsole;
 
 /**
 Log levels are a way for developers to group and filter log messages depending 

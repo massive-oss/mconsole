@@ -197,7 +197,7 @@ to convert native Haxe values into something inspectable where possible:
 
 ## Printer
 
-Printing is implemented by a `m.console.Printer`. Custom printers can be used:
+Printing is implemented by a `mconsole.Printer`. Custom printers can be used:
 
 	Console.addPrinter(new MyConsolePrinter());
 
@@ -209,9 +209,9 @@ To implement a custom printer:
 	/**
 	A ConsolePrinter that raises an alert for each log message.
 	*/
-	class AlertConsolePrinter implements m.console.Printer
+	class AlertConsolePrinter implements mconsole.Printer
 	{
-		public function print(level:m.console.LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos):Void
+		public function print(level:mconsole.LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos):Void
 		{
 			js.Lib.alert(Std.string(level) + "@" + pos.className + "." + pos.methodName + ":" + params.join(", "));
 		}

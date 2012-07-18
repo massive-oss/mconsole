@@ -1,4 +1,4 @@
-package m.console;
+package mconsole;
 
 #if (neko || php || cpp)
 import haxe.PosInfos;
@@ -14,7 +14,7 @@ import neko.FileSystem;
 import neko.io.FileOutput;
 #end
 
-import m.console.Printer;
+import mconsole.Printer;
 
 /**
 A console printer that prints formatted logs to stdout, or a file if `path` is 
