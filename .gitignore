@@ -2,3 +2,6 @@
 *.js.map
 *.swf
 *.n
+
+/build
+/test/TestSuite.hx
