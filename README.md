@@ -154,7 +154,7 @@ Timers can be used to quickly monitor runtime performance:
 
 	munging: 2410ms
 
-#### JavaScript/Webkit only
+### JavaScript/Webkit only
 
 The WebKit profiler can be started and stopped:
 
@@ -167,7 +167,7 @@ And markers added to the WebKit timeline view:
 
 	Console.markTimeline("finished");
 
-#### Type conversion
+### Type conversion
 
 As the WebKit console has user friendly structure inspection, console will try 
 to convert native Haxe values into something inspectable where possible:
