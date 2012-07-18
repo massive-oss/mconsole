@@ -1,0 +1,26 @@
+-js build/console.js
+-main Main
+-cp ../../../src
+-cp src
+-debug
+
+--next
+
+-swf build/console.swf
+-swf-header 800:600:60:0
+-main Main
+-cp ../../../src
+-cp src
+-debug
+
+--next
+
+-neko build/console.n
+-main Main
+-cp ../../../src
+-cp src
+-debug
+
+--next
+
+-cmd neko build/console.n
