@@ -2,8 +2,9 @@
 *.js.map
 *.swf
 *.n
+workspace.json
 
 .mcover
 
-/build
+/bin
 /test/TestSuite.hx
