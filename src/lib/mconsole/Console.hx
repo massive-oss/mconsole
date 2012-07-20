@@ -66,7 +66,7 @@ class Console
 	public static var defaultPrinter = 
 	#if (flash || js)
 		new ConsoleView();
-	#elseif (neko || php || cpp || cs || java)
+	#elseif (neko || php || cpp || java || cs)
 		new FilePrinter();
 	#end
 

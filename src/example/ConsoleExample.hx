@@ -1,4 +1,14 @@
-class Main
+import haxe.PosInfos;
+import mconsole.Printer;
+import mconsole.LogLevel;
+
+/**
+This example demonstrate the mconsole API. To recompile the example, execute 
+`haxe build.hxml` from the command line. Three targets are generated: 
+JavaScript, Flash and Neko. JavaScript and Flash targets log both to the WebKit 
+console and an on screen logger. Neko will log output to stdout.
+*/
+class ConsoleExample
 {
 	public static function main():Void
 	{
@@ -88,7 +98,7 @@ class Main
 		// console will do it's best to convert values to inspectable JS objects
 		Console.log(Xml.parse("<this><is><some><xml/><with/><elements/></some></is></this>"));
 		Console.log({anonymous:{object:{is:true,anonymous:true}}});
-		Console.log(["I'm","an","array","bitches"]);
+		Console.log(["I'm","an","array"]);
 		Console.log(value1);
 
 		// like enums
@@ -132,7 +142,25 @@ class Main
 	{
 		Console.error("oh noes!");
 	}
+}
 
+/**
+A simple printer implementation that filters messages for another printer so 
+that only error messages are printed.
+*/
+class FilteredPrinter implements Printer
+{
+	var printer:Printer;
+
+	public function new(printer:Printer)
+	{
+		this.printer = printer;
+	}
+
+	public function print(level:LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos):Void
+	{
+		if (level == LogLevel.error) printer.print(level, params, indent, pos);
+	}
 }
 
 enum TestEnum

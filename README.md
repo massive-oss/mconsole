@@ -1,6 +1,3 @@
-Console
-====================
-
 ## Console
 
 Console provides a consistent cross platform logging and debugging API. The API 
@@ -41,6 +38,8 @@ messages will not show the correct position. Use a ConsoleView if you
 require log positions.
 
 ## Example Usage:
+
+You can download an example of mconsole usage [here](https://github.com/downloads/massiveinteractive/MassiveConsole/example.zip).
 
 To enable the console, call:
 
@@ -216,9 +215,3 @@ To implement a custom printer:
 			js.Lib.alert(Std.string(level) + "@" + pos.className + "." + pos.methodName + ":" + params.join(", "));
 		}
 	}
-
-## Tests
-
-You can run the test suite using munit:
-
-	haxelib run munit test -js -as3 -neko -debug

@@ -1,0 +1,19 @@
+-js example-js/index.js
+-main ConsoleExample
+-lib mconsole
+
+--next
+
+-swf example-swf/index.swf
+-main ConsoleExample
+-lib mconsole
+
+--next
+
+-neko example-neko.n
+-main ConsoleExample
+-lib mconsole
+
+--next
+
+-cmd neko example-neko.n

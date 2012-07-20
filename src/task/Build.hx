@@ -22,6 +22,7 @@ SOFTWARE.
 
 import m.task.target.HaxeLib;
 import m.task.target.Neko;
+import m.task.target.Directory;
 import m.task.target.Web;
 import m.task.target.Haxe;
 
@@ -34,43 +35,55 @@ class Build extends m.task.core.BuildBase
 
 	@target function haxelib(target:HaxeLib)
 	{
-		target.name = "mconsole";
-		target.version = "1.0.0";
+		target.name = build.project.id;
+		target.version = build.project.version;
+		target.versionDescription = "Initial release.";
 		target.url = "http://github.com/massiveinteractive/MassiveConsole";
 		target.license.organization = "Massive Interactive";
 		target.username = "massive";
 		target.description = "MassiveConsole is a cross platform console and logging library.";
-		target.copyFiles = function()
+		target.addTag("cross");
+		target.addTag("utility");
+		target.afterCompile = function()
 		{
 			cp("src/lib", target.path);
+			cmd("haxe", ["-cp", "src/lib", "-js", target.path + "/haxedoc.js", 
+				"-xml", target.path + "/haxedoc.xml", "mconsole.Console"]);
+			rm(target.path + "/haxedoc.js");
 		}
 	}
 
-	function example(target:Haxe)
+	function exampleHaxe(target:Haxe)
 	{
 		target.addPath("src/lib");
 		target.addPath("src/example");
-		target.main = "Main";
+		target.main = "ConsoleExample";
 	}
 
-	@target('example-swf') function exampleSWF(target:Web)
+	@target function example(target:Directory)
 	{
-		example(target.js);
-	}
+		var exampleJS = new WebJS();
+		exampleHaxe(exampleJS.app);
+		target.addTarget("example-js", exampleJS);
 
-	@target('example-js') function exampleJS(target:Web)
-	{
-		example(target.js);
-	}
+		var exampleSWF = new WebSWF();
+		exampleHaxe(exampleSWF.app);
+		target.addTarget("example-swf", exampleSWF);
 
-	@target('example-neko') function exampleNeko(target:Neko)
-	{
-		example(target);
+		var exampleNeko = new Neko();
+		exampleHaxe(exampleNeko);
+		target.addTarget("example-neko", exampleNeko);
+
+		target.afterBuild = function()
+		{
+			cp("src/example", target.path);
+			zip(target.path, target.path + ".zip");
+		}
 	}
 
 	@task function release()
 	{
 		require("clean");
-		require("build haxelib", "build example-js", "build example-swf", "build example-neko");
+		require("build haxelib", "build example");
 	}
 }
