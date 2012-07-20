@@ -44,6 +44,8 @@ class Build extends m.task.core.BuildBase
 		target.description = "MassiveConsole is a cross platform console and logging library.";
 		target.addTag("cross");
 		target.addTag("utility");
+		target.addTag("sys");
+		target.addTag("massive");
 		target.afterCompile = function()
 		{
 			cp("src/lib", target.path);
@@ -77,7 +79,7 @@ class Build extends m.task.core.BuildBase
 		target.afterBuild = function()
 		{
 			cp("src/example", target.path);
-			zip(target.path, target.path + ".zip");
+			zip(target.path);
 		}
 	}
 
