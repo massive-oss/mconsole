@@ -4,11 +4,11 @@ Console provides a consistent cross platform logging and debugging API. The API
 is consistent with that of the WebKit console. Developers can:
 
 * redirect calls to "trace" to the console
-* log messages are different levels
+* log messages at different levels
 * print stack traces
 * inspect structured objects in the WebKit console
 * log multiple values in a single trace
-* make boolean assertions that trigger errors when they fail
+* make assertions that trigger errors when they fail
 * count invocations at positions within their code
 * visually group log messages
 * use timers to measure program performance
