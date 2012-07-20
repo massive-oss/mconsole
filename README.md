@@ -26,6 +26,8 @@ Console currently supports a number compiletime modes:
 * When the compiler flag `no_console` is set, the console inlines null 
   expressions, removing any runtime overhead from logging.
 
+![MassiveConsole in action](https://github.com/downloads/massiveinteractive/MassiveConsole/mconsole.png)
+
 ## Caveats
 
 When logging to the WebKit console (JavaScript in a WebKit browser) redirected 
