@@ -20,13 +20,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import m.task.target.HaxeLib;
-import m.task.target.Neko;
-import m.task.target.Directory;
-import m.task.target.Web;
-import m.task.target.Haxe;
+import mtask.target.HaxeLib;
+import mtask.target.Neko;
+import mtask.target.Directory;
+import mtask.target.Web;
+import mtask.target.Haxe;
 
-class Build extends m.task.core.BuildBase
+class Build extends mtask.core.BuildBase
 {
 	public function new()
 	{
@@ -92,6 +92,6 @@ class Build extends m.task.core.BuildBase
 
 	@task function test()
 	{
-		m.task.core.OS.run("haxelib", ["run", "munit", "test", "-js", "-as3", "-neko"]);
+		cmd("haxelib", ["run", "munit", "test", "-js", "-as3", "-neko"]);
 	}
 }
