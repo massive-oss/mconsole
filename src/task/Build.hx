@@ -88,4 +88,9 @@ class Build extends m.task.core.BuildBase
 		require("clean");
 		require("build haxelib", "build example");
 	}
+
+	@task function test()
+	{
+		m.task.core.OS.run("haxelib", ["run", "munit", "test", "-js", "-as3", "-neko", "-debug"]);
+	}
 }
