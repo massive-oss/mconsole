@@ -92,6 +92,6 @@ class Build extends m.task.core.BuildBase
 
 	@task function test()
 	{
-		m.task.core.OS.run("haxelib", ["run", "munit", "test", "-js", "-as3", "-neko", "-debug"]);
+		m.task.core.OS.run("haxelib", ["run", "munit", "test", "-js", "-as3", "-neko"]);
 	}
 }

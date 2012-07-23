@@ -3,29 +3,34 @@
 -lib munit
 -lib hamcrest
 -cp src/lib
-
 -cp src/test
 -swf-version 9
 -swf bin/test/as3_test.swf
+-debug
+
 --next
 #Flash 8
 -main TestMain
 -lib munit
 -lib hamcrest
 -cp src/lib
+-debug
 
 -cp src/test
 -swf-version 8
 -swf bin/test/as2_test.swf
+
 --next
 # JavaScript
 -main TestMain
 -lib munit
 -lib hamcrest
 -cp src/lib
+-debug
 
 -cp src/test
 -js bin/test/js_test.js
+
 
 --next
 
@@ -34,6 +39,7 @@
 -lib munit
 -lib hamcrest
 -cp src/lib
+-debug
 
 -cp src/test
 -neko bin/test/neko_test.n
