@@ -4,8 +4,7 @@
 *.n
 workspace.json
 *.sublime-workspace
-
+TestSuite.hx
 .mcover
 
 /bin
-/test/TestSuite.hx

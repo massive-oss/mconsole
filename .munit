@@ -1,6 +1,6 @@
-version=0.9.3.2
-src=test
-bin=build
-report=build/report
-hxml=test/targets.hxml
-classPaths=src
+version=0.9.4.1
+src=src/test
+bin=bin/test
+report=bin/test-report
+hxml=src/test/targets.hxml
+classPaths=src/lib
