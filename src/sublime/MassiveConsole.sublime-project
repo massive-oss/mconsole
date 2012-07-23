@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"name": "src",
+			"path": "../../src"
+		},
+		{
+			"name": "lib",
+			"path": "../../lib"
+		},
+		{
+			"name": "bin",
+			"path": "../../bin"
+		}
+	]
+}

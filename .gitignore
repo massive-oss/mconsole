@@ -3,6 +3,7 @@
 *.swf
 *.n
 workspace.json
+*.sublime-workspace
 
 .mcover
 
