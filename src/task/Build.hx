@@ -86,6 +86,7 @@ class Build extends m.task.core.BuildBase
 	@task function release()
 	{
 		require("clean");
+		require("test");
 		require("build haxelib", "build example");
 	}
 
