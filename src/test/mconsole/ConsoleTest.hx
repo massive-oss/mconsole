@@ -149,8 +149,8 @@ class ConsoleTest implements Printer
 @ massive.munit.TestRunner.executeTestCases:287
 @ massive.munit.TestRunner.execute:237
 @ massive.munit.TestRunner.run:221
-@ TestMain.new:50
-@ TestMain.main:24";
+@ TestMain.new:39
+@ TestMain.main:19";
 	#else
 	static var MUNIT_STACK = "@ (anonymous function)
 @ massive.munit.TestRunner.executeTestCase:316

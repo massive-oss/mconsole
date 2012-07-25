@@ -23,11 +23,11 @@ SOFTWARE.
 package mconsole;
 
 import mconsole.Printer;
+import haxe.PosInfos;
 
-#if js
+#if (js && !nodejs)
 
 import js.Dom;
-import haxe.PosInfos;
 
 /**
 A Printer that prints formatted logs to an HTML element.
@@ -156,7 +156,6 @@ class ConsoleView extends PrinterBase, implements Printer
 
 #elseif flash
 
-import haxe.PosInfos;
 import flash.text.TextField;
 import flash.text.TextFormat;
 import flash.display.Sprite;
@@ -296,6 +295,17 @@ class ConsoleView extends PrinterBase, implements Printer
 	{
 		flash.Lib.current.removeChild(sprite);
 	}
+}
+
+#else
+
+class ConsoleView implements Printer
+{
+	public function new() {}
+
+	public function print(level:LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos) {}
+	public function attach() {}
+	public function remove() {}
 }
 
 #end
