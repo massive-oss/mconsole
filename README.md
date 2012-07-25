@@ -16,7 +16,7 @@ is consistent with that of the WebKit console. Developers can:
 * log Haxe objects in way that is easily inspectable in the WebKit console
 * insert breakpoints (on supported platforms)
 
-Console currently supports a number compiletime modes:
+Console currently supports a number compile time modes:
 
 * On system platforms (neko/php/cpp) console prints to stdout, colorising output
 * In JS/Flash running in WebKit browser console prints to WebKit console
