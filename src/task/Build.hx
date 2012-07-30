@@ -48,7 +48,7 @@ class Build extends mtask.core.BuildBase
 		target.addTag("massive");
 		target.afterCompile = function()
 		{
-			cp("src/lib", target.path);
+			cp("src/lib/*", target.path);
 			cmd("haxe", ["-cp", "src/lib", "-js", target.path + "/haxedoc.js", 
 				"-xml", target.path + "/haxedoc.xml", "mconsole.Console"]);
 			rm(target.path + "/haxedoc.js");
