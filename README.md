@@ -26,11 +26,11 @@ Console currently supports a number compile time modes:
 * When the compiler flag `no_console` is set, the console inlines null 
   expressions, removing any runtime overhead from logging.
 
-![MassiveConsole in action](https://github.com/downloads/massiveinteractive/MassiveConsole/mconsole.png)
+![MassiveConsole in action](https://github.com/downloads/massiveinteractive/mconsole/mconsole.png)
 
 ## Example Usage:
 
-You can download an example of mconsole usage [here](https://github.com/downloads/massiveinteractive/MassiveConsole/example.zip).
+You can download an example of mconsole usage [here](https://github.com/downloads/massiveinteractive/mconsole/example.zip).
 
 To enable the console, call:
 
