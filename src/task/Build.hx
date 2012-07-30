@@ -38,7 +38,7 @@ class Build extends mtask.core.BuildBase
 		target.name = build.project.id;
 		target.version = build.project.version;
 		target.versionDescription = "Initial release.";
-		target.url = "http://github.com/massiveinteractive/MassiveConsole";
+		target.url = "http://github.com/massiveinteractive/mconsole";
 		target.license.organization = "Massive Interactive";
 		target.username = "massive";
 		target.description = "MassiveConsole is a cross platform console and logging library.";
