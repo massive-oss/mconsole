@@ -78,7 +78,7 @@ class Build extends mtask.core.BuildBase
 
 		target.afterBuild = function()
 		{
-			cp("src/example", target.path);
+			cp("src/example/*", target.path);
 			zip(target.path);
 		}
 	}
