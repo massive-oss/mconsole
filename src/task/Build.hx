@@ -41,7 +41,7 @@ class Build extends mtask.core.BuildBase
 		target.url = "http://github.com/massiveinteractive/mconsole";
 		target.license.organization = "Massive Interactive";
 		target.username = "massive";
-		target.description = "MassiveConsole is a cross platform console and logging library.";
+		target.description = "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JavaScript and Neko.";
 		target.addTag("cross");
 		target.addTag("utility");
 		target.addTag("sys");
