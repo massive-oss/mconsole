@@ -48,8 +48,8 @@ class Build extends mtask.core.BuildBase
 		target.addTag("massive");
 		target.afterCompile = function()
 		{
-			cp("src/lib/*", target.path);
-			cmd("haxe", ["-cp", "src/lib", "-js", target.path + "/haxedoc.js", 
+			cp("src/*", target.path);
+			cmd("haxe", ["-cp", "src", "-js", target.path + "/haxedoc.js", 
 				"-xml", target.path + "/haxedoc.xml", "mconsole.Console"]);
 			rm(target.path + "/haxedoc.js");
 		}
@@ -57,8 +57,8 @@ class Build extends mtask.core.BuildBase
 
 	function exampleHaxe(target:Haxe)
 	{
-		target.addPath("src/lib");
-		target.addPath("src/example");
+		target.addPath("src");
+		target.addPath("example");
 		target.main = "ConsoleExample";
 	}
 
@@ -78,7 +78,7 @@ class Build extends mtask.core.BuildBase
 
 		target.afterBuild = function()
 		{
-			cp("src/example/*", target.path);
+			cp("example/*", target.path);
 			zip(target.path);
 		}
 	}

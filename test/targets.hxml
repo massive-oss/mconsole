@@ -2,8 +2,8 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp src/lib
--cp src/test
+-cp src
+-cp test
 -swf-version 9
 -swf bin/test/as3_test.swf
 -debug
@@ -13,10 +13,10 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp src/lib
+-cp src
 -debug
 
--cp src/test
+-cp test
 -swf-version 8
 -swf bin/test/as2_test.swf
 
@@ -25,10 +25,10 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp src/lib
+-cp src
 -debug
 
--cp src/test
+-cp test
 -js bin/test/js_test.js
 
 
@@ -38,8 +38,8 @@
 -main TestMain
 -lib munit
 -lib hamcrest
--cp src/lib
+-cp src
 -debug
 
--cp src/test
+-cp test
 -neko bin/test/neko_test.n
