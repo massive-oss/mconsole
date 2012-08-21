@@ -8,17 +8,17 @@
 -swf bin/test/as3_test.swf
 -debug
 
---next
-#Flash 8
--main TestMain
--lib munit
--lib hamcrest
--cp src
--debug
-
--cp test
--swf-version 8
--swf bin/test/as2_test.swf
+#--next
+##Flash 8
+#-main TestMain
+#-lib munit
+#-lib hamcrest
+#-cp src
+#-debug
+#
+#-cp test
+#-swf-version 8
+#-swf bin/test/as2_test.swf
 
 --next
 # JavaScript
@@ -43,3 +43,15 @@
 
 -cp test
 -neko bin/test/neko_test.n
+
+
+--next
+
+## CPP
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp src
+-cp test
+-debug
+-cpp bin/test/cpp_test

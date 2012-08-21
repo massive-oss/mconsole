@@ -54,10 +54,13 @@ class StackHelper
 		stack.pop(); // Boot.hx:71:flash.Boot.start
 		#end
 
+
+		var i:Int = 0;
 		for (item in stack)
 		{
-			var itemString = "@ " + StackItemHelper.toString(item);
+			var itemString = "@ " + StackItemHelper.toString(item, #if cpp i==1 #else false #end);
 			if (!filters.exists(itemString)) stackTrace.push(itemString);
+			i ++;
 		}
 
 		return stackTrace.join("\n");
@@ -70,8 +73,9 @@ A utility class for formatting stack items as strings.
 */
 class StackItemHelper
 {
-	public static function toString(item:StackItem):String
+	public static function toString(item:StackItem, isFirst:Bool=false):String
 	{
+
 		return switch (item)
 		{
 			case Module(module): module;
@@ -84,7 +88,12 @@ class StackItemHelper
 				#end
 			case Lambda(v): "Lambda(" + v + ")";
 			case FilePos(s, file, line):
-				#if neko
+				#if cpp
+				if(isFirst && StringTools.endsWith(file, "Reflect.hx"))
+					"(anonymous function)"
+				else convertCPPPosition(s, file, line);
+
+				#elseif neko
 				(s == null ? file.split("::").join(".") + ":" + line : toString(s));
 				#else
 				(s == null ? file.split("::").join(".") + ":" + line : toString(s)) + ":" + line;
@@ -92,4 +101,20 @@ class StackItemHelper
 			case CFunction: "(anonymous function)";
 		}
 	}
+
+	#if cpp
+	static function convertCPPPosition(s:StackItem, file:String, line:Int):String
+	{
+		if(s != null)
+		{
+			var a = file.substr(0, file.length-3).split("/");
+			a.pop();
+
+			return a.join(".") + "." +toString(s) + ":" + line;
+		}
+
+		return file.split("/").join(".").substr + ":" + line;
+	}
+	#end
+
 }

@@ -141,27 +141,12 @@ class ConsoleTest implements Printer
 		Assert.areEqual("hello", lastParams[1]);
 		Assert.areEqual(info, lastParams[2]);
 	}
-
-	#if flash
-	static var MUNIT_STACK = "@ Function.http://adobe.com/AS3/2006/builtin::apply
-@ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:316
-@ massive.munit.TestRunner.executeTestCases:287
-@ massive.munit.TestRunner.execute:237
-@ massive.munit.TestRunner.run:221
-@ TestMain.new:39
-@ TestMain.main:19";
-	#else
-	static var MUNIT_STACK = "@ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:316
-@ massive.munit.TestRunner.executeTestCases:287
-@ massive.munit.TestRunner.execute:237
-@ massive.munit.TestRunner.run:209";
-	#end
 	
 	/*
 	This test will probably have to be updated by someone if munit changes in 
 	anyway. If that person is you: Welcome, friend!
+
+	Update(dom): David, we are no longer friends :)
 	*/
 	@Test
 	public function trace_prints_message_then_stack_trace()
@@ -342,4 +327,28 @@ class ConsoleTest implements Printer
 		return expectedStack;
 		#end
 	}
+
+	#if flash
+	static var MUNIT_STACK = "@ Function.http://adobe.com/AS3/2006/builtin::apply
+@ (anonymous function)
+@ massive.munit.TestRunner.executeTestCase:327
+@ massive.munit.TestRunner.executeTestCases:298
+@ massive.munit.TestRunner.execute:248
+@ massive.munit.TestRunner.run:232
+@ TestMain.new:38
+@ TestMain.main:19";
+	#elseif cpp
+	static var MUNIT_STACK = "@ (anonymous function)
+@ massive.munit.TestRunner.executeTestCase:327
+@ massive.munit.TestRunner.executeTestCases:298
+@ massive.munit.TestRunner.execute:248
+@ massive.munit.*._Function_1_1:220";
+	#else
+
+	static var MUNIT_STACK = "@ (anonymous function)
+@ massive.munit.TestRunner.executeTestCase:327
+@ massive.munit.TestRunner.executeTestCases:298
+@ massive.munit.TestRunner.execute:248
+@ massive.munit.TestRunner.run:220";
+	#end
 }

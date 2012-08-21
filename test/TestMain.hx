@@ -24,8 +24,8 @@ class TestMain
         suites.push(TestSuite);
 
         #if MCOVER
-            var client = new massive.mcover.munit.client.MCoverPrintClient();
-            var httpClient = new HTTPClient(new m.cover.coverage.munit.client.MCoverPrintClient());
+            var client = new mcover.coverage.munit.client.MCoverPrintClient();
+            var httpClient = new HTTPClient(new mcover.coverage.munit.client.MCoverSummaryReportClient());
         #else
             var client = new RichPrintClient();
             var httpClient = new HTTPClient(new SummaryReportClient());
@@ -33,7 +33,6 @@ class TestMain
 
         var runner:TestRunner = new TestRunner(client); 
         runner.addResultClient(httpClient);
-        //runner.addResultClient(new HTTPClient(new JUnitReportClient()));
         
         runner.completionHandler = completionHandler;
         runner.run(suites);
