@@ -25,6 +25,7 @@ import mtask.target.Neko;
 import mtask.target.Directory;
 import mtask.target.Web;
 import mtask.target.Haxe;
+import mtask.target.CPP;
 
 class Build extends mtask.core.BuildBase
 {
@@ -75,6 +76,10 @@ class Build extends mtask.core.BuildBase
 		var exampleNeko = new Neko();
 		exampleHaxe(exampleNeko);
 		target.addTarget("example-neko", exampleNeko);
+
+		var exampleCPP = new CPP();
+		exampleHaxe(exampleCPP);
+		target.addTarget("example-cpp", exampleCPP);
 
 		target.afterBuild = function()
 		{

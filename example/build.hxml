@@ -16,4 +16,10 @@
 
 --next
 
+-cpp example-cpp
+-main ConsoleExample
+-lib mconsole
+
+--next
 -cmd neko example-neko.n
+-cmd example-cpp/ConsoleExample
