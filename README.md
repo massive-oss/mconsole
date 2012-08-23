@@ -1,5 +1,3 @@
-## Console
-
 Console provides a consistent cross platform logging and debugging API. The API 
 is consistent with that of the WebKit console. Developers can:
 
@@ -34,13 +32,13 @@ You can download an example of mconsole usage [here](https://github.com/download
 
 To enable the console, call:
 
-```JavaScript
+```javascript
 Console.start();
 ```
 
 To log a message at a named level:
 
-```JavaScript
+```javascript
 trace("log", "Something happened.");
 trace("info", "Something interesting happened.");
 trace("debug", "WHY WON'T YOU WORK!!");
@@ -50,26 +48,26 @@ trace("error", "Something bad happened.");
 
 Messages default to LogLevel.log:
 
-```JavaScript
+```javascript
 trace("Logtastic");
 ```
 
 Log multiple values using trace. In WebKit console each value is inspectable 
 (rather than concatenating as a string)
 
-```JavaScript
+```javascript
 trace("string", 10, {key:"value"});
 ```
 
 You can also call the logging API directly:
 
-```JavaScript
+```javascript
 Console.log("better than bad, it's good!);
 ```
 
 Errors will print a message, then a stack trace:
 
-```JavaScript
+```javascript
 Console.error("Epic fail");
 ```
 
@@ -82,7 +80,7 @@ Outputs:
 You can also use `Console.trace` to print a stack trace without triggering 
 an error:
 
-```JavaScript
+```javascript
 Console.trace();
 ```
 
@@ -95,7 +93,7 @@ Outputs:
 Assertion will print a message and stack trace, then throw and exception when 
 the condition is false:
 
-```JavaScript
+```javascript
 Console.assert(foo == false, "foo is not false!!");
 ```
 
@@ -107,7 +105,7 @@ Outputs:
 
 To count the number of times a line of code is invoked:
 
-```JavaScript
+```javascript
 function someCode()
 {
 	Console.count("apples");
@@ -124,7 +122,7 @@ Outputs:
 
 Note that counters are identified by their position, not their label:
 
-```JavaScript
+```javascript
 Console.count("apples");
 Console.count("apples");
 ```
@@ -136,13 +134,13 @@ Outputs
 
 To insert a breakpoint in JavaScript or Flash:
 
-```JavaScript
+```javascript
 Console.enterDebugger();
 ```
 
 Group log messages together visually:
 
-```JavaScript
+```javascript
 Console.group("Group");
 Console.log("grouped log");
 Console.group("Nested group");
@@ -160,7 +158,7 @@ Output:
 
 Timers can be used to quickly monitor runtime performance:
 
-```JavaScript
+```javascript
 Console.time("munging");
 for (i in 0...4200000000) munge();
 Console.timeEnd("munging");
@@ -174,7 +172,7 @@ Output:
 
 The WebKit profiler can be started and stopped:
 
-```JavaScript
+```javascript
 Console.profile("performance");
 var f = function(x) { return x * x; }
 var x = f(10);
@@ -183,7 +181,7 @@ Console.profileEnd("performance");
 
 And markers added to the WebKit timeline view:
 
-```JavaScript
+```javascript
 Console.markTimeline("finished");
 ```
 
@@ -192,7 +190,7 @@ Console.markTimeline("finished");
 As the WebKit console has user friendly structure inspection, console will try 
 to convert native Haxe values into something inspectable where possible:
 
-```JavaScript
+```javascript
 // inspectable XML dom
 Console.log(Xml.parse("<this><is><some><xml/><with/><elements/></some></is></this>"));
 
@@ -221,7 +219,7 @@ Console.log(list);
 
 Printing is implemented by a `mconsole.Printer`. Custom printers can be used:
 
-```JavaScript
+```javascript
 Console.addPrinter(new MyConsolePrinter());
 ```
 
@@ -230,7 +228,7 @@ Flash, or a FilePrinter for system targets.
 
 To implement a custom printer:
 
-```JavaScript
+```javascript
 /**
 A ConsolePrinter that raises an alert for each log message.
 */
