@@ -2,10 +2,11 @@
 *.js.map
 *.swf
 *.n
-workspace.json
 *.sublime-workspace
 TestSuite.hx
 .mcover
 
 /bin
+/.temp
+
 .DS_Store

@@ -36,23 +36,20 @@ class Build extends mtask.core.BuildBase
 
 	@target function haxelib(target:HaxeLib)
 	{
-		target.name = build.project.id;
-		target.version = build.project.version;
-		target.versionDescription = "Initial release.";
 		target.url = "http://github.com/massiveinteractive/mconsole";
-		target.license.organization = "Massive Interactive";
-		target.username = "massive";
 		target.description = "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JavaScript and Neko.";
+		target.versionDescription = "Initial release.";
+
 		target.addTag("cross");
 		target.addTag("utility");
 		target.addTag("sys");
 		target.addTag("massive");
+
 		target.afterCompile = function()
 		{
 			cp("src/*", target.path);
-			cmd("haxe", ["-cp", "src", "-js", target.path + "/haxedoc.js", 
+			cmd("haxe", ["-cp", "src", "-js", target.path + "/haxedoc.js", "--no-output",
 				"-xml", target.path + "/haxedoc.xml", "mconsole.Console"]);
-			rm(target.path + "/haxedoc.js");
 		}
 	}
 
