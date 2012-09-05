@@ -1,25 +1,21 @@
--js example-js/index.js
+-js example.web/index.js
 -main ConsoleExample
 -lib mconsole
 
 --next
 
--swf example-swf/index.swf
+-swf example.flash/index.swf
 -main ConsoleExample
 -lib mconsole
 
 --next
 
--neko example-neko.n
+-neko example.n
 -main ConsoleExample
 -lib mconsole
 
 --next
 
--cpp example-cpp
+-cpp example.cpp
 -main ConsoleExample
 -lib mconsole
-
---next
--cmd neko example-neko.n
--cmd example-cpp/ConsoleExample

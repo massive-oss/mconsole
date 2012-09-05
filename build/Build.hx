@@ -20,12 +20,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import mtask.core.Target;
 import mtask.target.HaxeLib;
-import mtask.target.Neko;
-import mtask.target.Directory;
 import mtask.target.Web;
-import mtask.target.Haxe;
-import mtask.target.CPP;
+import mtask.target.Flash;
 
 class Build extends mtask.core.BuildBase
 {
@@ -34,62 +32,47 @@ class Build extends mtask.core.BuildBase
 		super();
 	}
 
-	@target function haxelib(target:HaxeLib)
+	@target function haxelib(t:HaxeLib)
 	{
-		target.url = "http://github.com/massiveinteractive/mconsole";
-		target.description = "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JavaScript and Neko.";
-		target.versionDescription = "Initial release.";
+		t.url = "http://github.com/massiveinteractive/mconsole";
+		t.description = "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JavaScript and Neko.";
+		t.versionDescription = "Initial release.";
 
-		target.addTag("cross");
-		target.addTag("utility");
-		target.addTag("sys");
-		target.addTag("massive");
+		t.addTag("cross");
+		t.addTag("utility");
+		t.addTag("sys");
+		t.addTag("massive");
 
-		target.afterCompile = function()
+		t.afterCompile = function(path)
 		{
-			cp("src/*", target.path);
-			cmd("haxe", ["-cp", "src", "-js", target.path + "/haxedoc.js", "--no-output",
-				"-xml", target.path + "/haxedoc.xml", "mconsole.Console"]);
+			cp("src/*", path);
 		}
 	}
 
-	function exampleHaxe(target:Haxe)
+	@target function example(t:Target)
 	{
-		target.addPath("src");
-		target.addPath("example");
-		target.main = "ConsoleExample";
-	}
-
-	@target function example(target:Directory)
-	{
-		var exampleJS = new WebJS();
-		exampleHaxe(exampleJS.app);
-		target.addTarget("example-js", exampleJS);
-
-		var exampleSWF = new WebSWF();
-		exampleHaxe(exampleSWF.app);
-		target.addTarget("example-swf", exampleSWF);
-
-		var exampleNeko = new Neko();
-		exampleHaxe(exampleNeko);
-		target.addTarget("example-neko", exampleNeko);
-
-		var exampleCPP = new CPP();
-		exampleHaxe(exampleCPP);
-		target.addTarget("example-cpp", exampleCPP);
-
-		target.afterBuild = function()
+		t.afterCompile = function(path)
 		{
-			cp("example/*", target.path);
-			zip(target.path);
+			mkdir(path);
+			cp(path + ".{web,flash,cpp,n}", path);
+			cp("example/*", path);
+			zip(path);
 		}
 	}
+
+	@target("example.web") function exampleWeb(t:Web) {}
+	@target("example.flash") function exampleFlash(t:Flash) {}
 
 	@task function release()
 	{
-		require("clean");
-		require("test");
-		require("build haxelib", "build example");
+		invoke("clean");
+		invoke("test");
+		invoke("build example.web");
+		invoke("build example.flash");
+		invoke("build example.cpp");
+		invoke("build example.n");
+		invoke("build example");
+		invoke("build haxelib");
 	}
 
 	@task function test()
