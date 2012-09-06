@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import mtask.core.Target;
+import mtask.target.Directory;
 import mtask.target.HaxeLib;
 import mtask.target.Web;
 import mtask.target.Flash;
@@ -49,28 +49,21 @@ class Build extends mtask.core.BuildBase
 		}
 	}
 
-	@target function example(t:Target)
+	@target function example(t:Directory)
 	{
-		t.afterCompile = function(path)
+		t.beforeCompile = function(path)
 		{
-			mkdir(path);
-			cp(path + ".{web,flash,cpp,n}", path);
 			cp("example/*", path);
-			zip(path);
 		}
 	}
 
-	@target("example.web") function exampleWeb(t:Web) {}
-	@target("example.flash") function exampleFlash(t:Flash) {}
+	@target("example/web") function exampleWeb(t:Web) {}
+	@target("example/flash") function exampleFlash(t:Flash) {}
 
 	@task function release()
 	{
 		invoke("clean");
 		invoke("test");
-		invoke("build example.web");
-		invoke("build example.flash");
-		invoke("build example.cpp");
-		invoke("build example.n");
 		invoke("build example");
 		invoke("build haxelib");
 	}
