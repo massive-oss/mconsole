@@ -116,17 +116,24 @@ class FilePrinter extends PrinterBase, implements Printer
 
 		output.writeString(line + "\n");
 
-		if (colorize) ConsoleStyle.set(ConsoleStyle.reset);
+		if (colorize)
+		{
+			ConsoleStyle.set(ConsoleStyle.reset);
+		}
 	}
 }
 
 /**
 A utility class for working with shell style sequences.
 */
-@:extern class ConsoleStyle
+class ConsoleStyle
 {
+	static var clicolor = Sys.getEnv("CLICOLOR") == "1";
+
 	inline public static function set(style:Int)
 	{
+		if (!clicolor) return;
+
 		#if haxe_209
 		Sys.print("\033[" + style + "m");
 		#else
