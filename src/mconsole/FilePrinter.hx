@@ -130,7 +130,7 @@ class ConsoleStyle
 {
 	static var clicolor = Sys.getEnv("CLICOLOR") == "1";
 
-	inline public static function set(style:Int)
+	public static function set(style:Int)
 	{
 		if (!clicolor) return;
 
@@ -141,33 +141,33 @@ class ConsoleStyle
 		#end
 	}
 
-	inline public static var blackF = 30;
-	inline public static var redF = 31;
-	inline public static var greenF = 32;
-	inline public static var yellowF = 33;
-	inline public static var blueF = 34;
-	inline public static var purpleF = 35;
-	inline public static var cyanF = 36;
-	inline public static var whiteF = 37;
-	inline public static var blackB = 40;
-	inline public static var redB = 41;
-	inline public static var greenB = 42;
-	inline public static var yellowB = 43;
-	inline public static var blueB = 44;
-	inline public static var purpleB = 45;
-	inline public static var cyanB = 46;
-	inline public static var whiteB = 47;
-	inline public static var boldOn = 1;
-	inline public static var boldOff = 22;
-	inline public static var italicsOn = 3;
-	inline public static var italicsOff = 23;
-	inline public static var underlineOn = 4;
-	inline public static var underlineOff = 24;
-	inline public static var blinkOn = 5;
-	inline public static var blinkOff = 25;
-	inline public static var invertOn = 7;
-	inline public static var invertOff = 27;
-	inline public static var reset = 0;
+	public static var blackF = 30;
+	public static var redF = 31;
+	public static var greenF = 32;
+	public static var yellowF = 33;
+	public static var blueF = 34;
+	public static var purpleF = 35;
+	public static var cyanF = 36;
+	public static var whiteF = 37;
+	public static var blackB = 40;
+	public static var redB = 41;
+	public static var greenB = 42;
+	public static var yellowB = 43;
+	public static var blueB = 44;
+	public static var purpleB = 45;
+	public static var cyanB = 46;
+	public static var whiteB = 47;
+	public static var boldOn = 1;
+	public static var boldOff = 22;
+	public static var italicsOn = 3;
+	public static var italicsOff = 23;
+	public static var underlineOn = 4;
+	public static var underlineOff = 24;
+	public static var blinkOn = 5;
+	public static var blinkOff = 25;
+	public static var invertOn = 7;
+	public static var invertOff = 27;
+	public static var reset = 0;
 }
 
 #end
