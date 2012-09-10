@@ -23,7 +23,9 @@ SOFTWARE.
 package mconsole;
 
 /**
-A utility class for working with shell styles.
+A utility class for working with shell styles. Each method returns a string 
+wrapped by a start and end style sequence. Note that styles will only apply 
+when the environment variable CLICOLOR is set.
 */
 class Style
 {
