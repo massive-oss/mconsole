@@ -96,78 +96,25 @@ class FilePrinter extends PrinterBase, implements Printer
 	}
 
 	/**
-	If colorize if false, write line to output, else write a style sequence, 
-	then a line of output, then a style reset sequence.
+	Print a colored line of output to the console.
 	*/
 	override function printLine(color:ConsoleColor, line:String, pos:PosInfos)
 	{
 		if (colorize)
 		{
-			ConsoleStyle.set(switch (color)
+			line = switch (color)
 			{
-				case none: ConsoleStyle.reset;
-				case white: ConsoleStyle.whiteF;
-				case blue: ConsoleStyle.blueF;
-				case green: ConsoleStyle.greenF;
-				case yellow: ConsoleStyle.yellowF;
-				case red: ConsoleStyle.redF;
-			});
+				case none: line;
+				case white: Style.white(line);
+				case blue: Style.blue(line);
+				case green: Style.green(line);
+				case yellow: Style.yellow(line);
+				case red: Style.red(line);
+			};
 		}
-
+		
 		output.writeString(line + "\n");
-
-		if (colorize)
-		{
-			ConsoleStyle.set(ConsoleStyle.reset);
-		}
 	}
-}
-
-/**
-A utility class for working with shell style sequences.
-*/
-class ConsoleStyle
-{
-	static var clicolor = Sys.getEnv("CLICOLOR") == "1";
-
-	public static function set(style:Int)
-	{
-		if (!clicolor) return;
-
-		#if haxe_209
-		Sys.print("\033[" + style + "m");
-		#else
-		neko.Lib.print("\033[" + style + "m");
-		#end
-	}
-
-	public static var blackF = 30;
-	public static var redF = 31;
-	public static var greenF = 32;
-	public static var yellowF = 33;
-	public static var blueF = 34;
-	public static var purpleF = 35;
-	public static var cyanF = 36;
-	public static var whiteF = 37;
-	public static var blackB = 40;
-	public static var redB = 41;
-	public static var greenB = 42;
-	public static var yellowB = 43;
-	public static var blueB = 44;
-	public static var purpleB = 45;
-	public static var cyanB = 46;
-	public static var whiteB = 47;
-	public static var boldOn = 1;
-	public static var boldOff = 22;
-	public static var italicsOn = 3;
-	public static var italicsOff = 23;
-	public static var underlineOn = 4;
-	public static var underlineOff = 24;
-	public static var blinkOn = 5;
-	public static var blinkOff = 25;
-	public static var invertOn = 7;
-	public static var invertOff = 27;
-	public static var reset = 0;
 }
 
 #end
