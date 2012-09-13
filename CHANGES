@@ -1,2 +1,4 @@
 1.0.0		Initial release
 1.1.0		Extracted styling into mconsole.Style and improved API
+1.1.1		Fixed compile time error when using console inside macros in NME, 
+			see: https://github.com/haxenme/NME/issues/21

@@ -45,6 +45,7 @@ class Build extends mtask.core.BuildBase
 
 		t.beforeCompile = function(path)
 		{
+			rm("src/haxelib.xml");
 			cp("src/*", path);
 		}
 	}

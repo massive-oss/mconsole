@@ -379,7 +379,8 @@ class Console
 	inline public static function time(name:String, ?pos:PosInfos):Void
 	{
 		if (isWebKit) callWebKit("time", [name]);
-		times.set(name, haxe.Timer.stamp());
+		// Use Sys.time() in macros, see: https://github.com/haxenme/NME/issues/21
+		times.set(name, #if macro Sys.time() #else haxe.Timer.stamp() #end);
 	}
 
 	/**
@@ -391,7 +392,8 @@ class Console
 		
 		if (times.exists(name))
 		{
-			print(LogLevel.log, [name + ": " + Std.int((haxe.Timer.stamp() - times.get(name)) * 1000) + "ms"], pos);
+			// Use Sys.time() in macros, see: https://github.com/haxenme/NME/issues/21
+			print(LogLevel.log, [name + ": " + Std.int((#if macro Sys.time() #else haxe.Timer.stamp() #end - times.get(name)) * 1000) + "ms"], pos);
 			times.remove(name);
 		}
 	}
