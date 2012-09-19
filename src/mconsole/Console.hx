@@ -64,7 +64,10 @@ class Console
 	The default console printer.
 	*/
 	public static var defaultPrinter = 
-	#if (flash || js)
+
+	#if nme
+		new LogPrinter(haxe.Log.trace);
+	#elseif (flash || js)
 		new ConsoleView();
 	#elseif (neko || php || cpp || java || cs)
 		new FilePrinter();
@@ -73,6 +76,7 @@ class Console
 	/**
 	The ConsolePrinters to print output to.
 	*/
+
 	static var printers:Array<Printer> = cast [defaultPrinter];
 	
 	/**
