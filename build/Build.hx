@@ -45,7 +45,6 @@ class Build extends mtask.core.BuildBase
 
 		t.beforeCompile = function(path)
 		{
-			rm("src/haxelib.xml");
 			cp("src/*", path);
 		}
 	}
@@ -61,16 +60,18 @@ class Build extends mtask.core.BuildBase
 	@target("example/web") function exampleWeb(t:Web) {}
 	@target("example/flash") function exampleFlash(t:Flash) {}
 
-	@task function release()
-	{
-		invoke("clean");
-		invoke("test");
-		invoke("build example");
-		invoke("build haxelib");
-	}
-
 	@task function test()
 	{
 		cmd("haxelib", ["run", "munit", "test", "-coverage"]);
+	}
+
+	@task function teamcity()
+	{
+		invoke("test");
+		invoke("build haxelib");
+		invoke("build example");
+
+		cmd("haxelib", ["run", "munit", "report", "teamcity"]);
+		cmd("killall", ['"Google Chrome"']);
 	}
 }
