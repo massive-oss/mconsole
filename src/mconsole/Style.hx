@@ -27,6 +27,8 @@ A utility class for working with shell styles. Each method returns a string
 wrapped by a start and end style sequence. Note that styles will only apply 
 when the environment variable CLICOLOR is set.
 */
+
+#if sys
 class Style
 {
 	static var clicolor = Sys.getEnv("CLICOLOR") == "1";
@@ -101,3 +103,5 @@ class Style
 		return style(s, 33, 39);
 	}
 }
+
+#end
