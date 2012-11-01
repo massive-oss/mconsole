@@ -506,7 +506,10 @@ class Console
 	*/
 	static function toWebKitValue(value:Dynamic):Dynamic
 	{
-		if (Std.is(value, Xml))
+		var typeClass = Type.getClass(value);
+		var typeName = typeClass == null ? "" : Type.getClassName(typeClass);
+
+		if (typeName == "Xml")
 		{
 			#if js
 			var parser = untyped __js__("new DOMParser()");
@@ -515,7 +518,7 @@ class Console
 			return {___xml___:true, xml:value.toString()};
 			#end
 		}
-		else if (Std.is(value, Hash))
+		else if (typeName == "Hash")
 		{
 			var native = {};
 			var hash = cast(value, Hash<Dynamic>);
@@ -525,7 +528,7 @@ class Console
 			}
 			return native;
 		}
-		else if (Std.is(value, IntHash))
+		else if (typeName == "IntHash")
 		{
 			var native = {};
 			var hash = cast(value, IntHash<Dynamic>);
@@ -559,7 +562,7 @@ class Console
 				default:
 			}
 			
-			if (Reflect.field(value, "iterator") != null)
+			if (typeName == "Array" || typeName == "List" || typeName == "haxe.FastList")
 			{
 				var native = [];
 				var iterable:Iterable<Dynamic> = cast value;
