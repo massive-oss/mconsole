@@ -23,6 +23,7 @@ SOFTWARE.
 package mconsole;
 
 import haxe.PosInfos;
+import haxe.Stack;
 
 /**
 This console implementation assumes the availability of the WebKit console. 
@@ -46,7 +47,7 @@ class Console
 	inline public static function info(message:Dynamic, ?pos:PosInfos) {}
 	inline public static function debug(message:Dynamic, ?pos:PosInfos) {}
 	inline public static function warn(message:Dynamic, ?pos:PosInfos) {}
-	inline public static function error(message:Dynamic, ?pos:PosInfos) {}
+	inline public static function error(message:Dynamic, ?stack:Bool=false, ?pos:PosInfos) {}
 	inline public static function trace() {}
 	inline public static function assert(expression:Bool, message:Dynamic) {}
 	inline public static function count(?title:String) {}
@@ -287,21 +288,22 @@ class Console
 	/**
 	Logs an "error" icon followed by a color-coded message.
 	*/
-	inline public static function error(message:Dynamic, ?pos:PosInfos):Void
+	inline public static function error(message:Dynamic, ?stack:Array<StackItem>=null, ?pos:PosInfos):Void
 	{
+		if (stack == null) stack = haxe.Stack.callStack();
+		var stackTrace = stack.length > 0 ? "\n" + StackHelper.toString(stack) : "";
+
 		if (isWebKit)
 		{
 			#if js
 			callWebKit("error", [message]);
 			#elseif flash
 			// can't send flash stack trace to WebKit, so warn instead
-			var stack = StackHelper.toString(haxe.Stack.callStack());
-			callWebKit("warn", ["Error: " + message + "\n" + stack]);
+			callWebKit("warn", ["Error: " + message + stackTrace]);
 			#end
 		}
 
-		var stack = StackHelper.toString(haxe.Stack.callStack());
-		print(LogLevel.error, ["Error: " + message + "\n" + stack], pos);
+		print(LogLevel.error, ["Error: " + message + stackTrace], pos);
 	}
 
 	/**
