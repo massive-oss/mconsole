@@ -99,9 +99,9 @@ class PrinterBase
 		var nextLineNumber = Std.string(pos.lineNumber);
 
 		// print positions/lines
-		var lineColumn = "  ";
-		var emptyLineColumn = "  ";
-		
+		var lineColumn = "";
+		var emptyLineColumn = "";
+
 		if (printPosition)
 		{
 			if (nextPosition != position)
@@ -122,10 +122,6 @@ class PrinterBase
 			{
 				lineColumn = emptyLineColumn;
 			}
-		}
-		else
-		{
-			lineColumn = "";
 		}
 
 		// update position
