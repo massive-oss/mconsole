@@ -99,8 +99,8 @@ class PrinterBase
 		var nextLineNumber = Std.string(pos.lineNumber);
 
 		// print positions/lines
-		var lineColumn = "  ";
-		var emptyLineColumn = "  ";
+		var lineColumn = "";
+		var emptyLineColumn = "";
 
 		if (printPosition)
 		{
@@ -112,7 +112,6 @@ class PrinterBase
 		
 		if (printLineNumbers)
 		{
-			
 			emptyLineColumn = StringTools.lpad("", " ", 5);
 
 			if (nextPosition != position || nextLineNumber != lineNumber)

@@ -36,7 +36,7 @@ class Build extends mtask.core.BuildBase
 	{
 		t.url = "http://github.com/massiveinteractive/mconsole";
 		t.description = "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JS, C++ and Neko.";
-		t.versionDescription = "Fixed compile time error when using mconsole inside macros in NME.";
+		t.versionDescription = "Added optional stack argument to Console.error to allow specifying stack trace source.";
 
 		t.addTag("cross");
 		t.addTag("utility");
@@ -45,7 +45,6 @@ class Build extends mtask.core.BuildBase
 
 		t.beforeCompile = function(path)
 		{
-			rm("src/haxelib.xml");
 			cp("src/*", path);
 		}
 	}
@@ -61,16 +60,17 @@ class Build extends mtask.core.BuildBase
 	@target("example/web") function exampleWeb(t:Web) {}
 	@target("example/flash") function exampleFlash(t:Flash) {}
 
-	@task function release()
-	{
-		invoke("clean");
-		invoke("test");
-		invoke("build example");
-		invoke("build haxelib");
-	}
-
 	@task function test()
 	{
-		cmd("haxelib", ["run", "munit", "test", "-coverage"]);
+		cmd("haxelib", ["run", "munit", "test"]);//, "-coverage"
+	}
+
+	@task function teamcity()
+	{
+		invoke("test");
+		cmd("haxelib", ["run", "munit", "report", "teamcity"]);
+
+		invoke("build haxelib");
+		invoke("build example");
 	}
 }
