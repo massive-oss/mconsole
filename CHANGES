@@ -5,3 +5,4 @@
 1.2.0		Added optional stack argument to Console.error to allow specifying
 			haxe.Stack.exceptionStack instead of haxe.Stack.callStack, or 
 			empty for no stack trace at all.
+1.2.1		Minor fixes to indentation of log output.
