@@ -63,7 +63,7 @@ class FilePrinter extends PrinterBase, implements Printer
 
 	@param	path	The optional path of the file to print to.
 	*/
-	public function new(?path:String)
+	public function new(?path:String, ?append:Bool=true)
 	{
 		super();
 		
@@ -74,7 +74,7 @@ class FilePrinter extends PrinterBase, implements Printer
 			
 			// either write or append to path
 			// TODO (dp): do we need to close this Output on deactivate?
-			if (!FileSystem.exists(path))
+			if (!FileSystem.exists(path) || !append)
 			{
 				output = File.write(path, false);
 			}
