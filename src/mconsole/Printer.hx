@@ -101,7 +101,7 @@ class PrinterBase
 		// print positions/lines
 		var lineColumn = "  ";
 		var emptyLineColumn = "  ";
-
+		
 		if (printPosition)
 		{
 			if (nextPosition != position)
@@ -112,7 +112,6 @@ class PrinterBase
 		
 		if (printLineNumbers)
 		{
-			
 			emptyLineColumn = StringTools.lpad("", " ", 5);
 
 			if (nextPosition != position || nextLineNumber != lineNumber)
@@ -123,6 +122,10 @@ class PrinterBase
 			{
 				lineColumn = emptyLineColumn;
 			}
+		}
+		else
+		{
+			lineColumn = "";
 		}
 
 		// update position
