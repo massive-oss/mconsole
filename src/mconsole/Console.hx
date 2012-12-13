@@ -23,7 +23,12 @@ SOFTWARE.
 package mconsole;
 
 import haxe.PosInfos;
+
+#if haxe_211
+import haxe.CallStack;
+#else
 import haxe.Stack;
+#end
 
 /**
 This console implementation assumes the availability of the WebKit console. 
