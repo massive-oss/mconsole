@@ -22,7 +22,11 @@ SOFTWARE.
 
 package mconsole;
 
+#if haxe_211
+import haxe.CallStack;
+#else
 import haxe.Stack;
+#end
 
 /**
 A utility class for formatting stack traces as strings.
