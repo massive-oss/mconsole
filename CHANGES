@@ -6,3 +6,4 @@
 			haxe.Stack.exceptionStack instead of haxe.Stack.callStack, or 
 			empty for no stack trace at all.
 1.2.1		Minor fixes to indentation of log output.
+1.2.2		Added support for Haxe 2.11

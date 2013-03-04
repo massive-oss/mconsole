@@ -1,7 +1,7 @@
 <project name="mconsole" url="http://github.com/massiveinteractive/mconsole" license="MIT">
 	<user name="massive"/>
 	<description><![CDATA[A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JS, C++ and Neko.]]></description>
-	<version name="1.2.1"><![CDATA[Minor changes to indentation of log output.]]></version>
+	<version name="1.2.2"><![CDATA[Adds support for Haxe 2.11]]></version>
 	<tag v="cross"/>
 	<tag v="utility"/>
 	<tag v="sys"/>
