@@ -2,11 +2,12 @@
 	"project": 
 	{
 		"name": "MassiveConsole",
-		"version": "1.2.2",
+		"version": "2.0.0",
 		"id": "mconsole",
 		"dependencies": 
 		{
-
+			"munit": "2.x",
+			"mcover": "2.x"
 		}
 	}
 }
