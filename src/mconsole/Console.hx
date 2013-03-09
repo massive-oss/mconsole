@@ -24,10 +24,13 @@ package mconsole;
 
 import haxe.PosInfos;
 
-#if haxe_211
+#if haxe3
 import haxe.CallStack;
+import haxe.ds.StringMap;
 #else
 import haxe.Stack;
+private typedef CallStack = haxe.Stack;
+private typedef StringMap<T> = Hash<T>;
 #end
 
 /**
@@ -92,14 +95,14 @@ class Console
 	static var groupDepth = 0;
 
 	/**
-	A hash of named timestamps.
+	A map of named timestamps.
 	*/
-	static var times = new Hash<Float>();
+	static var times = new StringMap<Float>();
 
 	/**
-	A hash of counters by a unique posInfo identifier.
+	A map of counters by a unique posInfo identifier.
 	*/
-	static var counts = new Hash<Int>();
+	static var counts = new StringMap<Int>();
 
 	/**
 	The previous value of haxe.Log.trace if redirectTraces has been called, or 
@@ -295,7 +298,7 @@ class Console
 	*/
 	inline public static function error(message:Dynamic, ?stack:Array<StackItem>=null, ?pos:PosInfos):Void
 	{
-		if (stack == null) stack = haxe.Stack.callStack();
+		if (stack == null) stack = CallStack.callStack();
 		var stackTrace = stack.length > 0 ? "\n" + StackHelper.toString(stack) : "";
 
 		if (isWebKit)
@@ -325,12 +328,12 @@ class Console
 			callWebKit("trace", []);
 			#elseif flash
 			// can't send flash stack trace to WebKit, so info instead
-			var stack = StackHelper.toString(haxe.Stack.callStack());
+			var stack = StackHelper.toString(CallStack.callStack());
 			callWebKit("info", ["Stack trace:\n" + stack]);
 			#end
 		}
 
-		var stack = StackHelper.toString(haxe.Stack.callStack());
+		var stack = StackHelper.toString(CallStack.callStack());
 		print(LogLevel.error, ["Stack trace:\n" + stack], pos);
 	}
 
@@ -343,7 +346,7 @@ class Console
 
 		if (!expression)
 		{
-			var stack = StackHelper.toString(haxe.Stack.callStack());
+			var stack = StackHelper.toString(CallStack.callStack());
 			print(LogLevel.error, ["Assertion failed: " + message + "\n" + stack], pos);
 			throw message;
 		}
@@ -525,17 +528,29 @@ class Console
 			return {___xml___:true, xml:value.toString()};
 			#end
 		}
+		#if haxe3
+		else if (typeName == "Map" || typeName == "StringMap" || typeName == "IntMap")
+		{
+			var native = {};
+			var map:Map<Dynamic, Dynamic> = cast value;
+			for (key in map.keys())
+			{
+				Reflect.setField(native, Std.string(key), toWebKitValue(map.get(key)));
+			}
+			return native;
+		}
+		#else
 		else if (typeName == "Hash")
 		{
 			var native = {};
 			var hash = cast(value, Hash<Dynamic>);
 			for (key in hash.keys())
 			{
-				Reflect.setField(native, key, toWebKitValue(hash.get(key)));
+				Reflect.setField(native, Std.string(key), toWebKitValue(hash.get(key)));
 			}
 			return native;
 		}
-		else if (typeName == "IntHash")
+		else if(typeName == "IntHash")
 		{
 			var native = {};
 			var hash = cast(value, IntHash<Dynamic>);
@@ -543,8 +558,8 @@ class Console
 			{
 				Reflect.setField(native, Std.string(key), toWebKitValue(hash.get(key)));
 			}
-			return native;
 		}
+		#end
 		else
 		{
 			switch (Type.typeof(value))

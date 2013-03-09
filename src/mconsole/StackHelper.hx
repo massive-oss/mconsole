@@ -22,10 +22,13 @@ SOFTWARE.
 
 package mconsole;
 
-#if haxe_211
+#if haxe3
 import haxe.CallStack;
+import haxe.ds.StringMap;
 #else
 import haxe.Stack;
+private typedef CallStack = haxe.Stack;
+private typedef StringMap<T> = Hash<T>;
 #end
 
 /**
@@ -37,7 +40,7 @@ class StackHelper
 
 	static function createFilters()
 	{
-		var filters = new Hash<Bool>();
+		var filters = new StringMap<Bool>();
 		filters.set("@ mconsole.ConsoleRedirect.haxeTrace:59", true);
 		return filters;
 	}

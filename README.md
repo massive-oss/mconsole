@@ -199,14 +199,14 @@ Console.log(value1);
 Console.log(value2(33));
 Console.log(value3({oooh:"fancy"}));
 
-// hashes
-var hash = new Hash<String>();
-hash.set("hashy", "goodness");
-Console.log(hash);
+// mapes
+var map = new StringMap<String>();
+map.set("mapy", "goodness");
+Console.log(map);
 
-var intHash = new IntHash<String>();
-intHash.set(10, "int hashy goodness");
-Console.log(intHash);
+var intMap = new IntMap<String>();
+intMap.set(10, "int mapy goodness");
+Console.log(intMap);
 
 // and iterable objects in general
 var list = new List<String>();

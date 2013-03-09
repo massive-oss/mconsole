@@ -26,13 +26,23 @@ import mconsole.Printer;
 import haxe.PosInfos;
 
 #if (js && !nodejs)
-
+#if haxe3
+import js.Browser;
+import js.html.Element;
+#else
 import js.Dom;
+private typedef Element = HtmlDom;
+private typedef Browser = js.Lib;
 
+#end
 /**
 A Printer that prints formatted logs to an HTML element.
 */
+#if haxe3
+class ConsoleView extends PrinterBase implements Printer
+#else
 class ConsoleView extends PrinterBase, implements Printer
+#end
 {
 	/**
 	The styles added to the document for the console printer.
@@ -62,7 +72,7 @@ class ConsoleView extends PrinterBase, implements Printer
 	The HTML element to print to, created when the printer is constructed and 
 	attached to document.body.
 	*/
-	public var element(default, null):HtmlDom;
+	public var element(default, null):Element;
 
 	/**
 	The projects home directory, determined at compilation time by a macro. 
@@ -85,7 +95,7 @@ class ConsoleView extends PrinterBase, implements Printer
 		projectHome = ConsoleMacro.getCwd();
 
 		// create element
-		var document = js.Lib.document;
+		var document = Browser.document;
 		element = document.createElement("pre");
 		element.id = "console";
 		
@@ -145,12 +155,13 @@ class ConsoleView extends PrinterBase, implements Printer
 
 	public function attach()
 	{
-		js.Lib.document.body.appendChild(element);
+		Browser.document.body.appendChild(element);
+		
 	}
 
 	public function remove()
 	{
-		js.Lib.document.body.removeChild(element);
+		Browser.document.body.removeChild(element);
 	}
 }
 
@@ -163,7 +174,11 @@ import flash.display.Sprite;
 /**
 A Printer that prints formatted logs to a Flash TextField.
 */
+#if haxe3
+class ConsoleView extends PrinterBase implements Printer
+#else
 class ConsoleView extends PrinterBase, implements Printer
+#end
 {
 	/**
 	The sprite container for the log panel
