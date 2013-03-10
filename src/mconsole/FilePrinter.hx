@@ -22,19 +22,13 @@ SOFTWARE.
 
 package mconsole;
 
-#if (neko || php || cpp)
+#if sys
 import haxe.PosInfos;
 import haxe.io.Output;
 
-#if haxe_209
 import sys.io.File;
 import sys.FileSystem;
 import sys.io.FileOutput;
-#else
-import sys.io.File;
-import neko.FileSystem;
-import neko.io.FileOutput;
-#end
 
 import mconsole.Printer;
 
@@ -42,7 +36,11 @@ import mconsole.Printer;
 A console printer that prints formatted logs to stdout, or a file if `path` is 
 provided when created.
 */
+#if haxe3
+class FilePrinter extends PrinterBase implements Printer
+#else
 class FilePrinter extends PrinterBase, implements Printer
+#end
 {
 	/**
 	Whether or not to print color sequences to indicate	the LogLevel of 
@@ -87,11 +85,7 @@ class FilePrinter extends PrinterBase, implements Printer
 		{
 			colorize = true;
 
-			#if haxe_209
 			output = Sys.stdout();
-			#else
-			output = neko.io.File.stdout;
-			#end
 		}
 	}
 

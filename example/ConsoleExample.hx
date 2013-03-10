@@ -2,6 +2,13 @@ import haxe.PosInfos;
 import mconsole.Printer;
 import mconsole.LogLevel;
 
+#if haxe3
+import haxe.ds.IntMap;
+import haxe.ds.StringMap;
+#else
+private typedef IntMap<T> = IntHash<T>;
+private typedef StringMap<T> = Hash<T>;
+#end
 /**
 This example demonstrate the mconsole API. To recompile the example, execute 
 `haxe build.hxml` from the command line. Three targets are generated: 
@@ -105,15 +112,15 @@ class ConsoleExample
 		Console.log(value2(33));
 		Console.log(value3({oooh:"fancy"}));
 
-		// and hashes
-		var hash = new Hash<String>();
-		hash.set("hashy", "goodness");
-		Console.log(hash);
+		// and mapes
+		var map = new StringMap<String>();
+		map.set("mapy", "goodness");
+		Console.log(map);
 
-		// and int hashes
-		var intHash = new IntHash<String>();
-		intHash.set(10, "int hashy goodness");
-		Console.log(intHash);
+		// and int mapes
+		var intMap = new IntMap<String>();
+		intMap.set(10, "int mapy goodness");
+		Console.log(intMap);
 
 		// and iterable objects in general
 		var list = new List<String>();

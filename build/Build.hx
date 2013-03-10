@@ -36,8 +36,8 @@ class Build extends mtask.core.BuildBase
 	{
 		t.url = "http://github.com/massiveinteractive/mconsole";
 		t.description = "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JS, C++ and Neko.";
-		t.versionDescription = "Adds support for Haxe 2.11";
-
+		t.versionDescription = "Adds support for Haxe 3";
+		
 		t.addTag("cross");
 		t.addTag("utility");
 		t.addTag("sys");
@@ -45,7 +45,13 @@ class Build extends mtask.core.BuildBase
 
 		t.beforeCompile = function(path)
 		{
+			rm("src/haxelib.xml");
 			cp("src/*", path);
+		}
+
+		t.afterCompile = function(path)
+		{
+			cp("bin/release/haxelib/haxelib.xml", "src/haxelib.xml");
 		}
 	}
 

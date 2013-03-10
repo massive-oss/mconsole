@@ -332,24 +332,24 @@ class ConsoleTest implements Printer
 	#if flash
 	static var MUNIT_STACK = "@ Function.http://adobe.com/AS3/2006/builtin::apply
 @ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:327
-@ massive.munit.TestRunner.executeTestCases:298
-@ massive.munit.TestRunner.execute:248
-@ massive.munit.TestRunner.run:232
-@ TestMain.new:38
-@ TestMain.main:19";
+@ massive.munit.TestRunner.executeTestCase:324
+@ massive.munit.TestRunner.executeTestCases:295
+@ massive.munit.TestRunner.execute:245
+@ massive.munit.TestRunner.run:229
+@ TestMain.new:37
+@ TestMain.main:18";
 	#elseif cpp
 	static var MUNIT_STACK = "@ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:327
-@ massive.munit.TestRunner.executeTestCases:298
-@ massive.munit.TestRunner.execute:248
-@ massive.munit.*._Function_1_1:220";
+@ massive.munit.TestRunner.executeTestCase:324
+@ massive.munit.TestRunner.executeTestCases:295
+@ massive.munit.TestRunner.execute:245
+@ massive.munit.*._Function_1_1:217";
 	#else
 
 	static var MUNIT_STACK = "@ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:327
-@ massive.munit.TestRunner.executeTestCases:298
-@ massive.munit.TestRunner.execute:248
-@ massive.munit.TestRunner.run:220";
+@ massive.munit.TestRunner.executeTestCase:324
+@ massive.munit.TestRunner.executeTestCases:295
+@ massive.munit.TestRunner.execute:245
+@ massive.munit.TestRunner.run:217";
 	#end
 }

@@ -10,3 +10,4 @@ TestSuite.hx
 /.temp
 
 .DS_Store
+/lib/

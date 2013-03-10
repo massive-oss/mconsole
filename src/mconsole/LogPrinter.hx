@@ -33,7 +33,11 @@ Console parses through
 
 @param output 				the original haxe.Log.trace function to call;
 */
+#if haxe3
+class LogPrinter extends PrinterBase implements Printer
+#else
 class LogPrinter extends PrinterBase, implements Printer
+#end
 {
 	var output:Dynamic->PosInfos->Void;
 	/**
