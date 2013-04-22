@@ -4,7 +4,8 @@
 		"name": "MassiveConsole",
 		"version": "1.3.0",
 		"id": "mconsole",
-		"dependencies": 
+		"dependencies":{},
+		"devDependencies":
 		{
 			"munit": "2.x",
 			"mcover": "2.x"
