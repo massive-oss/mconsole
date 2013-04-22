@@ -7,8 +7,9 @@
 		"dependencies":{},
 		"devDependencies":
 		{
-			"munit": "2.x",
-			"mcover": "2.x"
+			"mtask": "haxe3",
+			"munit": "feature/haxe-3",
+			"mcover": "feature/haxe-3"
 		}
 	}
 }
