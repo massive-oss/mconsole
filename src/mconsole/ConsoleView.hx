@@ -146,8 +146,12 @@ class ConsoleView extends PrinterBase, implements Printer
 
 		var file = pos.fileName + ":" + pos.lineNumber;
 		var fileName = pos.className.split(".").join("/") + ".hx";
-		var url = "txmt://open/?url=file://" + projectHome + "src/" + fileName + "&line=" + pos.lineNumber;
-		element.innerHTML = element.innerHTML + "<a href='" + url + "'><div style='color:" + style + "'>" + line + 
+		#if textmate
+		var link = ' href="txmt://open/?url=file://' + projectHome + 'src/' + fileName + '&line=' + pos.lineNumber + '"';
+		#else
+		var link = '';
+		#end
+		element.innerHTML = element.innerHTML + "<a"+link+"><div style='color:" + style + "'>" + line + 
 			"<span>" + file + "</span></div></a>";
 
 		if (atBottom) element.scrollTop = element.scrollHeight;

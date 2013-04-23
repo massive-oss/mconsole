@@ -278,21 +278,6 @@ class ConsoleTest implements Printer
 		Assert.areEqual(Std.string(time), pattern.matched(1));
 	}
 
-	@Ignore("Fails sopradically")
-	@Test
-	public function time_resets_previous_timer()
-	{
-		Console.time("timer");
-		for (i in 0...100000) value *= Math.random();
-		Console.time("timer");
-		Console.timeEnd("timer");
-
-		var pattern = ~/timer: (\d+)ms/;
-		pattern.match(lastParams[0]);
-		var time = Std.parseInt(pattern.matched(1));
-		Assert.areEqual(0, time);
-	}
-
 	@Test
 	public function time_end_does_nothing_if_timer_does_not_exist()
 	{

@@ -111,15 +111,17 @@ class ConsoleExample
 		// like enums
 		Console.log(value2(33));
 		Console.log(value3({oooh:"fancy"}));
-
-		// and mapes
+		
+		// and maps
 		var map = new StringMap<String>();
-		map.set("mapy", "goodness");
+		map.set("mappy", "goodness");
+		map.set("more", "keys");
 		Console.log(map);
 
-		// and int mapes
+		// and int maps
 		var intMap = new IntMap<String>();
-		intMap.set(10, "int mapy goodness");
+		intMap.set(10, "int mappy goodness");
+		intMap.set(22, "more keys");
 		Console.log(intMap);
 
 		// and iterable objects in general
