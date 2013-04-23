@@ -32,8 +32,8 @@ private typedef StringMap<T> = Hash<T>;
 #end
 
 /**
-A utility class for formatting stack traces as strings.
-*/
+	A utility class for formatting stack traces as strings.
+**/
 class StackHelper
 {
 	static var filters = createFilters();
@@ -76,8 +76,8 @@ class StackHelper
 }
 
 /**
-A utility class for formatting stack items as strings.
-*/
+	A utility class for formatting stack items as strings.
+**/
 class StackItemHelper
 {
 	public static function toString(item:StackItem, isFirst:Bool=false):String

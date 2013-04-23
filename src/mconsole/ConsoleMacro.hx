@@ -23,14 +23,14 @@ SOFTWARE.
 package mconsole;
 
 /**
-A macro helpers for the console package.
-*/
+	Macro helpers for the console package.
+**/
 @IgnoreCover
 class ConsoleMacro
 {
 	/**
-	Returns a string constant of the full path to the current project directory.
-	*/
+		Returns a string constant of the full path to the current project directory.
+	**/
 	#if haxe3 macro #else @:macro #end public static function getCwd()
 	{
 		var cwd = Sys.getCwd();

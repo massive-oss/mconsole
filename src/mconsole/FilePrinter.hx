@@ -33,9 +33,9 @@ import sys.io.FileOutput;
 import mconsole.Printer;
 
 /**
-A console printer that prints formatted logs to stdout, or a file if `path` is 
-provided when created.
-*/
+	A console printer that prints formatted logs to stdout, or a file if `path` 
+	is provided when created.
+**/
 #if haxe3
 class FilePrinter extends PrinterBase implements Printer
 #else
@@ -43,24 +43,24 @@ class FilePrinter extends PrinterBase, implements Printer
 #end
 {
 	/**
-	Whether or not to print color sequences to indicate	the LogLevel of 
-	each printed message.
+		Whether or not to print color sequences to indicate	the LogLevel of 
+		each printed message.
 
-	See https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash
-	*/
+		See https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash
+	**/
 	public var colorize:Bool;
 
 	/**
-	The FileOutput to print message to.
-	*/
+		The FileOutput to print message to.
+	**/
 	var output:Output;
 
 	/**
-	Create a new CommandLineConsolePrinter, passing an option file path if 
-	messages should be printed to a file instead of stdout.
+		Create a new CommandLineConsolePrinter, passing an option file path if 
+		messages should be printed to a file instead of stdout.
 
-	@param	path	The optional path of the file to print to.
-	*/
+		@param	path	The optional path of the file to print to.
+	**/
 	public function new(?path:String, ?append:Bool=true)
 	{
 		super();
@@ -90,8 +90,8 @@ class FilePrinter extends PrinterBase, implements Printer
 	}
 
 	/**
-	Print a colored line of output to the console.
-	*/
+		Print a colored line of output to the console.
+	**/
 	override function printLine(color:ConsoleColor, line:String, pos:PosInfos)
 	{
 		if (colorize)

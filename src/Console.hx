@@ -21,6 +21,6 @@ SOFTWARE.
 */
 
 /**
-An alias for mconsole.Console
-*/
+	An alias for mconsole.Console
+**/
 typedef Console = mconsole.Console;

@@ -25,50 +25,50 @@ package mconsole;
 import haxe.PosInfos;
 
 /**
-A ConsolePrinter is responsible for printing the output of the Console. 
-Messages can be printed at different LogLevels and at different 
-indentations. Implementations can also define activate/deactivate behavior 
-when they are set/unset as the current console printer using 
-Console.setPrinter()
-*/
+	A ConsolePrinter is responsible for printing the output of the Console. 
+	Messages can be printed at different LogLevels and at different 
+	indentations. Implementations can also define activate/deactivate behavior 
+	when they are set/unset as the current console printer using 
+	Console.setPrinter()
+**/
 interface Printer
 {
 	/**
-	Print an array of values to the console at a LogLevel and indent level.
+		Print an array of values to the console at a LogLevel and indent level.
 
-	@param	level	The level of the message to print
-	@param	params	An array of values to print
-	@param	indent	The indent level of the message to be printed.
-	@param	pos		The position where the message was printed.
-	*/
+		@param	level	The level of the message to print
+		@param	params	An array of values to print
+		@param	indent	The indent level of the message to be printed.
+		@param	pos		The position where the message was printed.
+	**/
 	function print(level:LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos):Void;
 }
 
 /**
-A base ConsolePrinter implementation for functionality shared by 
-FlashConsolePrinter, HTMLConsolePrinter and CommandLineConsolePrinter.
-*/
+	A base ConsolePrinter implementation for functionality shared by 
+	FlashConsolePrinter, HTMLConsolePrinter and CommandLineConsolePrinter.
+**/
 class PrinterBase
 {
 	/**
-	When the printing position changes (position is className.methodName), 
-	print the new position before the message.
-	*/
+		When the printing position changes (position is className.methodName), 
+		print the new position before the message.
+	**/
 	public var printPosition:Bool;
 
 	/**
-	When the printing line changes print the line number before the message.
-	*/
+		When the printing line changes print the line number before the message.
+	**/
 	public var printLineNumbers:Bool;
 
 	/**
-	The previous log's position.
-	*/
+		The previous log's position.
+	**/
 	var position:String;
 
 	/**
-	The previous log's line number.
-	*/
+		The previous log's line number.
+	**/
 	var lineNumber:String;
 
 	function new()
@@ -78,13 +78,13 @@ class PrinterBase
 	}
 
 	/**
-	Print an array of values to the console at a LogLevel and indent level.
+		Print an array of values to the console at a LogLevel and indent level.
 
-	@param	level	The level of the message to print
-	@param	params	An array of values to print
-	@param	indent	The indent level of the message to be printed.
-	@param	pos		The position where the message was printed.
-	*/
+		@param	level	The level of the message to print
+		@param	params	An array of values to print
+		@param	indent	The indent level of the message to be printed.
+		@param	pos		The position where the message was printed.
+	**/
 	public function print(level:LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos):Void
 	{
 		params = params.copy();
@@ -148,8 +148,8 @@ class PrinterBase
 	}
 
 	/**
-	Abstract implementation.
-	*/
+		Abstract implementation.
+	**/
 	function printLine(color:ConsoleColor, line:String, pos:PosInfos)
 	{
 		throw "method not implemented in ConsolePrinterBase";
@@ -157,8 +157,8 @@ class PrinterBase
 }
 
 /**
-An enum defining possible colors for console output.
-*/
+	An enum defining possible colors for console output.
+**/
 enum ConsoleColor
 {
 	none;
