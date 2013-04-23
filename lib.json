@@ -1,5 +1,4 @@
 {
-	"hamcrest":"1.2.0",
 	"msignal":"1.1.2",
 	"mlib":"2.0.0",
 	"mcover":"2.0.1",
@@ -7,5 +6,6 @@
 	"mconsole":"1.2.2",
 	"mcore":"1.1.0",
 	"munit":"2.0.0",
+	"hamcrest":"1.2.0",
 	"mtask":"1.4.3"
 }
