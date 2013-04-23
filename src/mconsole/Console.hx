@@ -74,7 +74,7 @@ class Console
 	**/
 	public static var defaultPrinter = 
 
-	#if nme
+	#if (cpp && nme)
 		new LogPrinter(haxe.Log.trace);
 	#elseif (flash || js)
 		new ConsoleView();
