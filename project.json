@@ -6,7 +6,7 @@
 		"id": "mconsole",
 		"dependencies":
 		{
-			"mtask": "1.x",
+			"mtask": "1.x"
 		},
 		"devDependencies":
 		{
