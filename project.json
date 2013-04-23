@@ -4,15 +4,12 @@
 		"name": "MassiveConsole",
 		"version": "1.3.0",
 		"id": "mconsole",
-		"dependencies":
-		{
-			"mtask": "1.x"
-		},
+		"dependencies":{},
 		"devDependencies":
 		{
 			"mtask": "1.x",
-			"munit": "feature/haxe-3",
-			"mcover": "feature/haxe-3"
+			"munit": "2.x",
+			"mcover": "2.x"
 		}
 	}
 }
