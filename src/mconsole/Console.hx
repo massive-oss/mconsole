@@ -74,7 +74,7 @@ class Console
 	**/
 	public static var defaultPrinter = 
 
-	#if (cpp && nme)
+	#if ((cpp && nme) || nodejs)
 		new LogPrinter(haxe.Log.trace);
 	#elseif (flash || js)
 		new ConsoleView();
@@ -172,9 +172,11 @@ class Console
 		}
 		else
 		{
-			#if (js || flash)
-			// attach default printer to document/stage
-			defaultPrinter.attach();
+			#if !nodejs
+				#if (js || flash)
+				// attach default printer to document/stage
+				defaultPrinter.attach();
+				#end
 			#end
 		}
 	}
@@ -482,7 +484,7 @@ class Console
 	**/
 	static function detectConsole():Bool
 	{ 
-		#if js
+		#if (js && !nodejs)
 		if (untyped console != null && console[dirxml] == null) dirxml = "log";
 		return untyped __js__("console != undefined && console.log != undefined");
 		#elseif flash

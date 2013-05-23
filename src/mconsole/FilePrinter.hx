@@ -22,7 +22,7 @@ SOFTWARE.
 
 package mconsole;
 
-#if sys
+#if (sys || nodejs)
 import haxe.PosInfos;
 import haxe.io.Output;
 
@@ -84,8 +84,9 @@ class FilePrinter extends PrinterBase, implements Printer
 		else
 		{
 			colorize = true;
-
+#if !nodejs
 			output = Sys.stdout();
+#end
 		}
 	}
 

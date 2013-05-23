@@ -46,6 +46,11 @@ class LogPrinter extends PrinterBase, implements Printer
 	{
 		this.output = output;
 		super();
+		
+		#if nodejs
+		untyped __js__("require('source-map-support').install()"); 
+		#end
+
 	}
 
 	override public function print(level:LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos):Void
@@ -69,7 +74,8 @@ class LogPrinter extends PrinterBase, implements Printer
 
 		var indentStr = "  " + StringTools.lpad("", " ", indent * 2);
 
-		message = "\n" + indentStr + message.split("\n").join("\n" + indentStr);
+		message = indentStr + message.split("\n").join("\n" + indentStr);
+
 	
 		// determine color from level
 		var color = switch (level)
@@ -92,6 +98,18 @@ class LogPrinter extends PrinterBase, implements Printer
 	**/
 	override function printLine(color:ConsoleColor, line:String, pos:PosInfos)
 	{
+		#if nodejs
+		line = switch (color)
+		{
+			case none: line;
+			case white: Style.white(line);
+			case blue: Style.blue(line);
+			case green: Style.green(line);
+			case yellow: Style.yellow(line);
+			case red: Style.red(line);
+		};
+		#end
+
 		output(line, pos);
 	}
 }

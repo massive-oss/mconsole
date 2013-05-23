@@ -27,7 +27,7 @@ package mconsole;
 	wrapped by a start and end style sequence. Note that styles will only apply 
 	when the environment variable CLICOLOR is set.
 **/
-#if sys
+#if (sys || nodejs)
 class Style
 {
 	static var clicolor = Sys.getEnv("CLICOLOR") == "1";
