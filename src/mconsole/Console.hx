@@ -76,9 +76,9 @@ class Console
 
 	#if (cpp && nme)
 		new LogPrinter(haxe.Log.trace);
-	#elseif (flash || js)
+	#elseif (flash || (js && !nodejs))
 		new ConsoleView();
-	#elseif (neko || php || cpp || java || cs)
+	#elseif (sys || nodejs)
 		new FilePrinter();
 	#end
 
@@ -172,7 +172,7 @@ class Console
 		}
 		else
 		{
-			#if (js || flash)
+			#if ((js && !nodejs) || flash)
 			// attach default printer to document/stage
 			defaultPrinter.attach();
 			#end
@@ -482,7 +482,7 @@ class Console
 	**/
 	static function detectConsole():Bool
 	{ 
-		#if js
+		#if (js && !nodejs)
 		if (untyped console != null && console[dirxml] == null) dirxml = "log";
 		return untyped __js__("console != undefined && console.log != undefined");
 		#elseif flash
@@ -499,7 +499,7 @@ class Console
 	**/
 	inline static function callConsole(method:String, params:Array<Dynamic>)
 	{
-		#if js
+		#if (js && !nodejs)
 		if (untyped console[method] != null)
 		{
 			if (method == "log" && Std.is(params[0], Xml)) method = dirxml;

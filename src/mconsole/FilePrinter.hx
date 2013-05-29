@@ -22,13 +22,15 @@ SOFTWARE.
 
 package mconsole;
 
-#if sys
+#if (sys || nodejs)
 import haxe.PosInfos;
 import haxe.io.Output;
 
+#if sys
 import sys.io.File;
 import sys.FileSystem;
 import sys.io.FileOutput;
+#end
 
 import mconsole.Printer;
 
@@ -53,7 +55,7 @@ class FilePrinter extends PrinterBase, implements Printer
 	/**
 		The FileOutput to print message to.
 	**/
-	var output:Output;
+	var output:Dynamic;
 
 	/**
 		Create a new CommandLineConsolePrinter, passing an option file path if 
@@ -64,12 +66,22 @@ class FilePrinter extends PrinterBase, implements Printer
 	public function new(?path:String, ?append:Bool=true)
 	{
 		super();
-		
+
 		if (path != null)
 		{
 			// don't colorize log file output by default
 			colorize = false;
+		
+			#if nodejs
+			var fs = untyped __js__("require('fs')");
+			var mode = (!fs.existsSync(path) || !append) ? "w" : "a";
+			var stream:Dynamic = fs.createWriteStream(path, {flags:mode});
+			output = {writeString:function(value:String) {
+				stream.write(value);
+			}};
+			output.close = stream.end;
 			
+			#else
 			// either write or append to path
 			// TODO (dp): do we need to close this Output on deactivate?
 			if (!FileSystem.exists(path) || !append)
@@ -80,12 +92,18 @@ class FilePrinter extends PrinterBase, implements Printer
 			{
 				output = File.append(path, false);
 			}
+			#end
 		}
 		else
 		{
 			colorize = true;
-
+			#if nodejs
+			output = {writeString:function(v:String) { 
+				untyped console.log(v.substr(0, v.length -1)); 
+			}};
+			#else
 			output = Sys.stdout();
+			#end
 		}
 	}
 
