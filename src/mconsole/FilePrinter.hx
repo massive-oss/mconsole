@@ -73,12 +73,22 @@ class FilePrinter extends PrinterBase, implements Printer
 			colorize = false;
 		
 			#if nodejs
+
+			output = {buffer:[]};
+			output.writeString = function(value:String) {
+				output.buffer.push(value);
+			};
+
 			var fs = untyped __js__("require('fs')");
 			var mode = (!fs.existsSync(path) || !append) ? "w" : "a";
 			var stream:Dynamic = fs.createWriteStream(path, {flags:mode});
-			output = {writeString:function(value:String) {
-				stream.write(value);
-			}};
+			stream.once("open", function() {
+				output.writeString = function(value:String) {
+					stream.write(value);
+				}
+				while (output.buffer.length > 0) 
+					stream.write(output.buffer.shift());				
+			});
 			output.close = stream.end;
 			
 			#else
