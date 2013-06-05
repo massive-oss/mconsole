@@ -232,6 +232,7 @@ class Console
 	{
 		var params = pos.customParams;
 		if (params == null) params = [];
+		else pos.customParams = null;
 		
 		var level = switch (value)
 		{
