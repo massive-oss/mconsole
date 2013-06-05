@@ -1,7 +1,7 @@
 <project name="mconsole" url="http://github.com/massiveinteractive/mconsole" license="MIT">
-	<user name="massive"/>
+	<user name="default.user"/>
 	<description><![CDATA[A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JS, C++ and Neko.]]></description>
-	<version name="1.3.0"><![CDATA[Adds support for Haxe 3]]></version>
+	<version name="1.4.0"><![CDATA[Added support for Node.js and included haxelib.json]]></version>
 	<tag v="cross"/>
 	<tag v="utility"/>
 	<tag v="sys"/>
