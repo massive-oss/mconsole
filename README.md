@@ -16,7 +16,7 @@ is consistent with that of the WebKit console. Developers can:
 
 Console currently supports a number compile time modes:
 
-* On system platforms (neko/php/cpp) console prints to stdout, colorising output
+* On system platforms (neko/php/cpp/nodejs) console prints to stdout, colorising output
 * In JS/Flash running in WebKit browser console prints to WebKit console
 * In JS running in non-webkit browser console prints to an element in the DOM
 * In Flash running standalone or in a non-WebKit browser console prints to an 
