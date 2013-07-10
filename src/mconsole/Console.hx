@@ -67,6 +67,8 @@ class Console
 	inline public static function profile(?title:String) {}
 	inline public static function profileEnd(?title:String) {}
 
+    public static var defaultPrinter = null;
+
 	#else
 
 	/**
