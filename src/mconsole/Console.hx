@@ -76,6 +76,8 @@ class Console
 
 	#if (cpp && nme)
 		new LogPrinter(haxe.Log.trace);
+	#elseif (js && samsung && !browser)
+		new AlertPrinter();
 	#elseif (flash || js)
 		new ConsoleView();
 	#elseif (neko || php || cpp || java || cs)
@@ -174,7 +176,7 @@ class Console
 		{
 			#if (js || flash)
 			// attach default printer to document/stage
-			defaultPrinter.attach();
+			// defaultPrinter.attach();
 			#end
 		}
 	}
@@ -482,7 +484,9 @@ class Console
 	**/
 	static function detectConsole():Bool
 	{ 
-		#if js
+		#if (js && samsung && !browser)
+		return false;
+		#elseif js
 		if (untyped console != null && console[dirxml] == null) dirxml = "log";
 		return untyped __js__("console != undefined && console.log != undefined");
 		#elseif flash
