@@ -1,5 +1,6 @@
 
-1.3.0	       Added support for Haxe 3 RC
+1.4.0       Added support for Node.js and included haxelib.json
+1.3.0       Added support for Haxe 3 RC
 1.2.2		Added support for Haxe 2.11 change from Stack to CallStack 
 1.2.1		Minor fixes to indentation of log output.
 1.2.0		Added optional stack argument to Console.error to allow specifying
