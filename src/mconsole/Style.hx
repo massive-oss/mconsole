@@ -30,7 +30,7 @@ package mconsole;
 #if (sys || nodejs)
 class Style
 {
-	static var clicolor = #if nodejs untyped __js__("process.env.CLICOLOR") #else Sys.getEnv("CLICOLOR") #end == "1";
+	static var clicolor = #if (nodejs && !sys) untyped __js__("process.env.CLICOLOR") #else Sys.getEnv("CLICOLOR") #end == "1";
 
 	static function style(string:String, start:Int, stop:Int):String
 	{
