@@ -510,10 +510,11 @@ class Console
 		if (untyped console[method] != null)
 		{
 			if (method == "log" && Std.is(params[0], Xml)) method = dirxml;
-			// in IE 9, console methods are not DOM objects, so don't inherit from 
-			// Function, and so don't support apply. Awesome sauce.
-			untyped Function.prototype.bind.call(console[method], console).apply(console, mconsole.Console.toConsoleValues(params));
-			// untyped console[method].apply(console, mconsole.Console.toConsoleValues(params));
+			
+			if (untyped console[method].apply != null)
+				untyped console[method].apply(console, mconsole.Console.toConsoleValues(params));
+			else if (untyped Function.prototype.bind != null)
+				untyped Function.prototype.bind.call(console[method], console).apply(console, mconsole.Console.toConsoleValues(params));
 		}
 			
 		#elseif flash
