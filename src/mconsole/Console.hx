@@ -25,6 +25,7 @@ package mconsole;
 import haxe.PosInfos;
 
 #if haxe3
+import Map;
 import haxe.CallStack;
 import haxe.ds.StringMap;
 #else
@@ -557,7 +558,7 @@ class Console
 		else if (typeName == "Map" || typeName == "StringMap" || typeName == "IntMap")
 		{
 			var native = {};
-			var map:Map<Dynamic, Dynamic> = cast value;
+			var map:IMap<Dynamic, Dynamic> = cast value;
 			for (key in map.keys())
 			{
 				Reflect.setField(native, Std.string(key), toConsoleValue(map.get(key)));
