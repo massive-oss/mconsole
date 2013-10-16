@@ -55,7 +55,11 @@ class FilePrinter extends PrinterBase, implements Printer
 	/**
 		The FileOutput to print message to.
 	**/
+	#if nodejs
 	var output:Dynamic;
+	#else
+	var output:Output;
+	#end
 
 	/**
 		Create a new CommandLineConsolePrinter, passing an option file path if 
@@ -73,7 +77,6 @@ class FilePrinter extends PrinterBase, implements Printer
 			colorize = false;
 		
 			#if nodejs
-
 			output = {buffer:[]};
 			output.writeString = function(value:String) {
 				output.buffer.push(value);
