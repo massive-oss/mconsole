@@ -1,4 +1,8 @@
 {
+	"plugin":
+	{
+		"mui":"0"
+	},
 	"project": 
 	{
 		"id": "mconsole",

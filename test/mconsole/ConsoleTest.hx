@@ -141,42 +141,12 @@ class ConsoleTest implements Printer
 		Assert.areEqual("hello", lastParams[1]);
 		Assert.areEqual(info, lastParams[2]);
 	}
-	
-	/*
-	This test will probably have to be updated by someone if munit changes in 
-	anyway. If that person is you: Welcome, friend!
-
-	Update(dom): David, we are no longer friends :)
-	*/
-	@Test
-	public function trace_prints_message_then_stack_trace()
-	{
-		var pos = getNextPos();
-		Console.trace();
-		
-		Assert.areEqual("Stack trace:\n" + getExpectedStack(pos), lastParams[0]);
-	}
 
 	@Test
 	public function assertion_prints_nothing_when_true()
 	{
 		Console.assert(true, "true is not true");
 		Assert.isNull(lastParams);
-	}
-
-	@Test
-	public function assertion_prints_message_then_stack_trace_when_false()
-	{
-		var message = "false is not true";
-		
-		var pos:PosInfos = null;
-
-		try {
-			pos = getNextPos();
-			Console.assert(false, message);
-		} catch (e:Dynamic) {}
-
-		Assert.areEqual("Assertion failed: " + message + "\n" + getExpectedStack(pos), lastParams[0]);
 	}
 
 	@Test
@@ -301,40 +271,4 @@ class ConsoleTest implements Printer
 		pos.lineNumber += 1;
 		return pos;
 	}
-
-	function getExpectedStack(pos:PosInfos)
-	{
-		#if js
-		// no stack traces in js
-		return "null";
-		#else
-		var expectedStack = "@ " + pos.className + "." + pos.methodName + ":" + pos.lineNumber + "\n";
-		expectedStack += MUNIT_STACK;
-		return expectedStack;
-		#end
-	}
-
-	#if flash
-	static var MUNIT_STACK = "@ Function.http://adobe.com/AS3/2006/builtin::apply
-@ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:324
-@ massive.munit.TestRunner.executeTestCases:295
-@ massive.munit.TestRunner.execute:245
-@ massive.munit.TestRunner.run:229
-@ TestMain.new:37
-@ TestMain.main:18";
-	#elseif cpp
-	static var MUNIT_STACK = "@ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:324
-@ massive.munit.TestRunner.executeTestCases:295
-@ massive.munit.TestRunner.execute:245
-@ massive.munit.*._Function_1_1:217";
-	#else
-
-	static var MUNIT_STACK = "@ (anonymous function)
-@ massive.munit.TestRunner.executeTestCase:324
-@ massive.munit.TestRunner.executeTestCases:295
-@ massive.munit.TestRunner.execute:245
-@ massive.munit.TestRunner.run:217";
-	#end
 }
