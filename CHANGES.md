@@ -1,10 +1,14 @@
-## 1.5.0
+## 1.6.0
 
 - Support change from Lambda to LocalFunction in Haxe 3.1
-- Added support for node.js
+- Improved support for node.js
 - Haxe 3 improvements
 - Fixed runtime errors in old browsers and phantomjs
 - Added AlertPrinter for "special" platforms like samsung.
+
+## 1.5.0
+
+- ???
 
 ## 1.4.0
 
