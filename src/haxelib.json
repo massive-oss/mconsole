@@ -4,8 +4,8 @@
 	"tags": ["cross","utility","sys","massive"],
 	"description": "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JS, C++ and Neko.",
 	"contributors": ["massive"],
-	"releasenote": "Added support for Node.js and included haxelib.json",
-	"version": "1.4.0",
+	"releasenote": "Minor fixes and improvements, support for Haxe 3.1",
+	"version": "1.6.0",
 	"url": "http://github.com/massiveinteractive/mconsole",
 	"dependencies": 
 	{
