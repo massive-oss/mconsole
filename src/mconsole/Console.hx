@@ -492,7 +492,7 @@ class Console
 		return false;
 		#elseif (js && !nodejs)
 		if (untyped console != null && console[dirxml] == null) dirxml = "log";
-		return untyped __js__("console != undefined && console.log != undefined");
+		return untyped __js__("console != undefined && console.log != undefined && console.warn != undefined");
 		#elseif flash
 		return flash.external.ExternalInterface.available &&
 			flash.external.ExternalInterface.call("console.error.toString") != null;
