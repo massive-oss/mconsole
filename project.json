@@ -1,20 +1,23 @@
 {
-	"plugin":
+	"plugin": 
 	{
-		"mui":"0"
+		"mui": "0"
 	},
 	"project": 
 	{
-		"id": "mconsole",
 		"name": "MassiveConsole",
-		"version": "1.4.0",
-		"dependencies":{},
-		"devDependencies":
+		"version": "1.5.0",
+		"id": "mconsole",
+		"devDependencies": 
 		{
+			"mcover": "2.x",
+			"hamcrest": "1.x",
 			"mtask": "2.x",
-			"hamcrest":"1.x",
-			"munit":"2.x",
-			"mcover":"2.x"
+			"munit": "2.x"
+		},
+		"dependencies": 
+		{
+
 		}
 	}
 }
