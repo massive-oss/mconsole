@@ -93,10 +93,14 @@ class StackItemHelper
 				#else
 				className + "." + method;
 				#end
-			#if (haxe_ver >= 3.1)
-			case LocalFunction(v): "LocalFunction(" + v + ")";
+			#if haxe3
+				#if (haxe_ver >= 3.1)
+				case LocalFunction(v): "LocalFunction(" + v + ")";
+				#else
+				case Lambda(v): "Lambda(" + v + ")";
+				#end
 			#else
-			case Lambda(v): "Lambda(" + v + ")";
+				case Lambda(v): "Lambda(" + v + ")";
 			#end
 			case FilePos(s, file, line):
 				#if cpp

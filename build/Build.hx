@@ -36,7 +36,7 @@ class Build extends mtask.core.BuildBase
 	{
 		t.url = "http://github.com/massiveinteractive/mconsole";
 		t.description = "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JS, C++ and Neko.";
-		t.versionDescription = "Minor fixes and improvements, support for Haxe 3.1";
+		t.versionDescription = "Hotfix";
 		t.username = "massive";
 		
 		t.addTag("cross");

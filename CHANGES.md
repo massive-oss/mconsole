@@ -1,3 +1,7 @@
+## 1.6.1
+
+- Hotfix for Haxe < 3.0
+
 ## 1.6.0
 
 - Support change from Lambda to LocalFunction in Haxe 3.1
