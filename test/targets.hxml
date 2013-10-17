@@ -45,13 +45,13 @@
 -neko bin/test/neko_test.n
 
 
-# --next
+--next
 
-# ## CPP
-# -main TestMain
-# -lib munit
-# -lib hamcrest
-# -cp src
-# -cp test
-# -debug
-# -cpp bin/test/cpp_test
+## CPP
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp src
+-cp test
+-debug
+-cpp bin/test/cpp_test

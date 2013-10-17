@@ -23,7 +23,6 @@ SOFTWARE.
 package mconsole;
 
 import haxe.PosInfos;
-
 import massive.munit.Assert;
 
 class ConsoleTest implements Printer
@@ -255,7 +254,27 @@ class ConsoleTest implements Printer
 		Assert.areEqual(null, lastParams);
 	}
 
+	#if cpp
+	@Test
+	public function test_assert_with_instance_message()
+	{
+		try
+		{
+			Console.assert(false, new FooException("something happened"));
+		}
+		catch (e:Dynamic)
+		{
+			Assert.areEqual(Std.string(e), "FooException");
+		}
+	}
+	#end
+
 	// helper
+
+	function getPosInfos(?pos:PosInfos)
+	{
+		return pos;
+	}
 
 	public function print(level:LogLevel, params:Array<Dynamic>, indent:Int, pos:PosInfos):Void
 	{
@@ -270,5 +289,15 @@ class ConsoleTest implements Printer
 	{
 		pos.lineNumber += 1;
 		return pos;
+	}
+}
+
+class FooException
+{
+	var message:String;
+
+	public function new(message:String)
+	{
+		this.message = message;
 	}
 }
