@@ -304,8 +304,20 @@ class Console
 	**/
 	inline public static function error(message:Dynamic, ?stack:Array<StackItem>=null, ?pos:PosInfos):Void
 	{
-		if (stack == null) stack = CallStack.callStack();
-		var stackTrace = stack.length > 0 ? "\n" + StackHelper.toString(stack) : "";
+		var stackTrace = "";
+		if (stack == null)
+		{
+			// some devices do not support call stack, we may get an exception here
+			try
+			{
+				stack = CallStack.callStack();
+				stackTrace = stack.length > 0 ? "\n" + StackHelper.toString(stack) : "";
+			}
+			catch (e:Dynamic)
+			{
+				// ignore
+			}
+		}
 
 		if (hasConsole)
 		{
