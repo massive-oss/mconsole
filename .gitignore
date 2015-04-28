@@ -11,3 +11,5 @@ TestSuite.hx
 
 .DS_Store
 /lib/
+
+.haxelib

@@ -30,9 +30,10 @@ class TestMain
             var httpClient = new HTTPClient(new SummaryReportClient());
         #end
 
-        var runner:TestRunner = new TestRunner(client); 
+        var runner:TestRunner = new TestRunner(client);
+        runner.addResultClient(new HTTPClient(new JUnitReportClient()));
         runner.addResultClient(httpClient);
-        
+
         runner.completionHandler = completionHandler;
         runner.run(suites);
     }
