@@ -1,0 +1,13 @@
+{
+	"mlib": "2.0.2",
+	"msys": "1.2.2",
+	"mcover": "2.1.1",
+	"hamcrest": "1.2.1",
+	"msignal": "1.2.3",
+	"mconsole": "1.6.1",
+	"mcore": "1.3.13",
+	"mdk-core": "073c62f",
+	"mtask": "2.1.2",
+	"munit": "2.1.1",
+	"hxcpp": "3.2.102"
+}

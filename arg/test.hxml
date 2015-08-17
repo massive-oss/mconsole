@@ -1,0 +1,42 @@
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp src/lib
+-cp src/test
+-swf-version 9
+-swf bin/test/as3_test.swf
+-debug
+
+--next
+
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp src/lib
+-debug
+
+-cp src/test
+-js bin/test/js_test.js
+
+
+--next
+
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp src/lib
+-debug
+
+-cp src/test
+-neko bin/test/neko_test.n
+
+
+--next
+
+-main TestMain
+-lib munit
+-lib hamcrest
+-cp src/lib
+-cp src/test
+-debug
+-cpp bin/test/cpp_test

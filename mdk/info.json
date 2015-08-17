@@ -1,0 +1,33 @@
+{
+	"name": "mconsole",
+	"version": "1.6.1",
+	"dependencies":
+	[
+		{
+			"name": "mcover",
+			"version": "^2.0.0",
+			"development": true
+		},
+		{
+			"name": "hamcrest",
+			"version": "^1.0.0",
+			"development": true
+		},
+		{
+			"name": "munit",
+			"version": "^2.0.0",
+			"development": true
+		},
+		{
+			"name": "hxcpp",
+			"version": "^3.1.0",
+			"source": "haxelib",
+			"development": true
+		},
+		{
+			"name": "mdk-core",
+			"version": "master",
+			"development": true
+		}
+	]
+}

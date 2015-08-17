@@ -1,0 +1,19 @@
+-main ConsoleExample
+-lib mconsole
+-cp src/example
+
+--each
+
+-js bin/example/javascript.js
+
+--next
+
+-swf bin/example/flash.swf
+
+--next
+
+-neko bin/example/neko.n
+
+--next
+
+-cpp bin/example/native

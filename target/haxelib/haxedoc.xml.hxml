@@ -1,4 +1,0 @@
--js haxedoc.js
--cp src
---no-output
-mconsole.Console

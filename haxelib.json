@@ -1,0 +1,19 @@
+{
+	"name": "minject",
+	"license": "MIT",
+	"tags": [
+		"cross",
+		"utility",
+		"massive",
+		"sys"
+	],
+	"classPath": "src/lib",
+	"description": "A cross platform Haxe implementation of the WebKit console API supporting logging, debugging and profiling. Currently supports AVM2, JS, C++ and Neko.",
+	"contributors": [
+		"massive"
+	],
+	"releasenote": "See https://github.com/massiveinteractive/mconsole/blob/master/doc/changes.md",
+	"version": "1.6.1",
+	"url": "https://github.com/massiveinteractive/mconsole",
+	"dependencies": {}
+}
