@@ -331,8 +331,16 @@ class Console
 			#end
 		}
 
-		var stack = StackHelper.toString(CallStack.callStack());
-		print(LogLevel.error, ["Stack trace:\n" + stack], pos);
+		// some devices do not support call stack, we may get an exception here
+		try
+		{
+			var stack = StackHelper.toString(CallStack.callStack());
+			print(LogLevel.error, ["Stack trace:\n" + stack], pos);
+		}
+		catch (e:Dynamic)
+		{
+			// ignore
+		}
 	}
 
 	/**
@@ -344,8 +352,16 @@ class Console
 
 		if (!expression)
 		{
-			var stack = StackHelper.toString(CallStack.callStack());
-			print(LogLevel.error, ["Assertion failed: " + message + "\n" + stack], pos);
+			// some devices do not support call stack, we may get an exception here
+			try
+			{
+				var stack = StackHelper.toString(CallStack.callStack());
+				print(LogLevel.error, ["Assertion failed: " + message + "\n" + stack], pos);				
+			}
+			catch (e:Dynamic)
+			{
+				// ignore
+			}
 			throw message;
 		}
 	}
@@ -503,7 +519,7 @@ class Console
 		if (untyped console[method] != null)
 		{
 			if (method == "log" && Std.is(params[0], Xml)) method = dirxml;
-			
+
 			if (untyped console[method].apply != null)
 				untyped console[method].apply(console, mconsole.Console.toConsoleValues(params));
 			else if (untyped Function.prototype.bind != null)
