@@ -62,7 +62,7 @@ trace("string", 10, {key:"value"});
 You can also call the logging API directly:
 
 ```javascript
-Console.log("better than bad, it's good!);
+Console.log("better than bad, it's good!");
 ```
 
 Errors will print a message, then a stack trace:
